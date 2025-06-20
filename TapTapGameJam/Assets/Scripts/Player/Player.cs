@@ -64,8 +64,6 @@ public class Player : MonoBehaviour
             GameObject nthChild = mainArm.transform.GetChild(childCount-2).gameObject;
             armWeight.GetComponent<ArmWeight>().AttatchSelfToArm(nthChild, false, true);
         }
-
-        //Debug.Log(curArmLength);
     }
 
     void OnCollisionEnter2D(Collision2D collision)

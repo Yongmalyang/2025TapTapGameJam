@@ -8,7 +8,7 @@ public class UnattachedArmWeight : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            //Destroy(self);
+
         }
     }
 }
