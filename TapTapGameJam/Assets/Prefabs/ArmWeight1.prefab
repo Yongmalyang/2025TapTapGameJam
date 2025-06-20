@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 82034838577830255}
   - component: {fileID: 4402721837625793622}
   m_Layer: 0
-  m_Name: ArmWeight
+  m_Name: ArmWeight1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -208,3 +208,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b785144b3e56e34c8d714ff91880df5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ratio: 0.5

@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 {
     public float floatForce = 2f;        // 떠오르는 힘
     public Transform capsuleSprite; // ← CapsuleSprite를 Inspector에 할당할 것
-    public float curArmLength = 0;
+    //public float curArmLength = 0;
 
     private Rigidbody2D rb;
 
@@ -56,16 +56,16 @@ public class Player : MonoBehaviour
         if (childCount == 1)
         {
             // 자기 자신에게 붙이기
-            curArmLength = armWeight.GetComponent<ArmWeight>().AttatchSelfToArm(gameObject, curArmLength, true ,true);
+            armWeight.GetComponent<ArmWeight>().AttatchSelfToArm(gameObject, true ,true);
         }
         else if(childCount > 1)
         {
             // 마지막 팔에 붙이기, 내 직전 친구
             GameObject nthChild = mainArm.transform.GetChild(childCount-2).gameObject;
-            curArmLength = armWeight.GetComponent<ArmWeight>().AttatchSelfToArm(nthChild, curArmLength, false, true);
+            armWeight.GetComponent<ArmWeight>().AttatchSelfToArm(nthChild, false, true);
         }
 
-        Debug.Log(curArmLength);
+        //Debug.Log(curArmLength);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
