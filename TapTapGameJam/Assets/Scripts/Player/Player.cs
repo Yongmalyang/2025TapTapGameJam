@@ -6,9 +6,6 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public float floatForce = 2f;        // 떠오르는 힘
-    public Transform capsuleSprite; // ← CapsuleSprite를 Inspector에 할당할 것
-    //public float curArmLength = 0;
-
     private Rigidbody2D rb;
 
     [SerializeField]
@@ -43,35 +40,60 @@ public class Player : MonoBehaviour
 
     }
 
-    void AttachArmWeight(int index)
+    // index: LA, RA, LL, RL
+    public void AttachArmWeight(int index)
     {
-        GameObject mainArm = LeftArm; //임시로
+        Debug.Log(index);
+
+        GameObject mainArm;
+        string armTag;
+
+        switch (index)
+        {
+            case 0: //LA
+                mainArm = LeftArm;
+                armTag = "LeftArm";
+                break;
+            case 1: //RA
+                mainArm = RightArm;
+                armTag = "RightArm";
+                break;
+            case 2: //LL
+                //mainArm = LeftLeg;
+                mainArm = LeftArm;
+                armTag = "LeftArm";
+                break;
+            case 3: //RL
+                //mainArm = RightLeg;
+                mainArm = RightArm;
+                armTag = "RightArm";
+                break;
+            default:
+                mainArm = LeftArm;
+                armTag = "LeftArm";
+                break;
+        }
+        
         GameObject armWeight = Instantiate(ArmWeightPrefab, mainArm.transform);
+        armWeight.tag = armTag;
         float armWeightWidth = armWeight.GetComponent<SpriteRenderer>().bounds.size.x;
 
         int childCount = mainArm.transform.childCount;
 
         // 이미 생성되어서 붙어있는 시점에서의 팔 개수
         // 이미 부착했으니까 자식 1개
+
+        // 짝수면 isLeft가 true
         if (childCount == 1)
         {
             // 자기 자신에게 붙이기
-            armWeight.GetComponent<ArmWeight>().AttatchSelfToArm(gameObject, true ,true);
+            armWeight.GetComponent<ArmWeight>().AttatchSelfToArm(gameObject, true , index % 2 == 0);
         }
         else if(childCount > 1)
         {
             // 마지막 팔에 붙이기, 내 직전 친구
             GameObject nthChild = mainArm.transform.GetChild(childCount-2).gameObject;
-            armWeight.GetComponent<ArmWeight>().AttatchSelfToArm(nthChild, false, true);
-        }
-    }
-
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("ArmWeight"))
-        {
-            AttachArmWeight(0);
-            Destroy(collision.gameObject);
+            armWeight.GetComponent<ArmWeight>().AttatchSelfToArm(nthChild, false, index % 2 == 0);
         }
     }
 }
