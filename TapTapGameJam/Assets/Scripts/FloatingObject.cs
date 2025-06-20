@@ -22,28 +22,32 @@ public class FloatingObject : MonoBehaviour
         {
             Debug.Log("A input");
             rb.velocity = new Vector2(-floatForce, floatForce);  // x: 앞으로, y: 아래로
-            capsuleSprite.localRotation = Quaternion.Euler(0, 0, 5f);
+            Quaternion targetRot = Quaternion.Euler(0, 0, 5f); // A 기준 예시
+            capsuleSprite.localRotation = Quaternion.Lerp(capsuleSprite.localRotation, targetRot, Time.deltaTime * 5f);
         }
 
         if (Input.GetKey(KeyCode.D))
         {
             Debug.Log("D input");
-            rb.velocity = new Vector2(floatForce, floatForce);   // x: 앞으로, y: 위로
-            capsuleSprite.localRotation = Quaternion.Euler(0, 0, -5f);
+            rb.velocity = new Vector2(floatForce, floatForce);   
+            Quaternion targetRot = Quaternion.Euler(0, 0, -5f); 
+            capsuleSprite.localRotation = Quaternion.Lerp(capsuleSprite.localRotation, targetRot, Time.deltaTime * 5f);
         }
 
         if (Input.GetKey(KeyCode.W))
         {
             Debug.Log("W input");
-            rb.velocity = new Vector2(0, floatForce);   // x: 앞으로, y: 위로
-            capsuleSprite.localRotation = Quaternion.Euler(0, 0, 0);
+            rb.velocity = new Vector2(0, floatForce);  
+            Quaternion targetRot = Quaternion.Euler(0, 0, 0); 
+            capsuleSprite.localRotation = Quaternion.Lerp(capsuleSprite.localRotation, targetRot, Time.deltaTime * 5f);
         }
 
         if (Input.GetKey(KeyCode.S))
         {
             Debug.Log("S input");
-            rb.velocity = new Vector2(0, -floatForce);   // x: 앞으로, y: 위로
-            capsuleSprite.localRotation = Quaternion.Euler(0, 0, 0);
+            rb.velocity = new Vector2(0, -floatForce);   
+            Quaternion targetRot = Quaternion.Euler(0, 0, 0); 
+            capsuleSprite.localRotation = Quaternion.Lerp(capsuleSprite.localRotation, targetRot, Time.deltaTime * 5f);
         }
     }
 }
