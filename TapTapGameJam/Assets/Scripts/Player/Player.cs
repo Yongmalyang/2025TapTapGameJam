@@ -6,10 +6,11 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public float floatForce = 2f;        // ¶°¿À¸£´Â Èû
+    public float playerRatio;        // ¶°¿À¸£´Â Èû
     private Rigidbody2D rb;
 
     [SerializeField]
-    private GameObject ArmWeightPrefab;
+    private List<GameObject> ArmWeightPrefab = new List<GameObject>();
     [SerializeField]
     private GameObject LeftArm;
     [SerializeField]
@@ -41,7 +42,7 @@ public class Player : MonoBehaviour
     }
 
     // index: LA, RA, LL, RL
-    public void AttachArmWeight(int index)
+    public void AttachArmWeight(int index, int armWeightType)
     {
         Debug.Log(index);
 
@@ -74,7 +75,7 @@ public class Player : MonoBehaviour
                 break;
         }
         
-        GameObject armWeight = Instantiate(ArmWeightPrefab, mainArm.transform);
+        GameObject armWeight = Instantiate(ArmWeightPrefab[armWeightType], mainArm.transform);
         armWeight.tag = armTag;
         float armWeightWidth = armWeight.GetComponent<SpriteRenderer>().bounds.size.x;
 

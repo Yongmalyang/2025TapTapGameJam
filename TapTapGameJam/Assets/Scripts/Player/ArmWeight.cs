@@ -23,7 +23,7 @@ public class ArmWeight : MonoBehaviour
         float MyRatio = ratio;
         float ParentRatio=0;
 
-        if (isFirstArm) ParentRatio = ConnectedBody.GetComponent<SpriteRenderer>().bounds.size.x / 2;
+        if (isFirstArm) ParentRatio = GameManager.Instance.Player.GetComponent<Player>().playerRatio;
         else ParentRatio = ConnectedBody.GetComponent<ArmWeight>().ratio;
 
         // 왼쪽에 붙일지 오른쪽에 붙일지
@@ -38,7 +38,7 @@ public class ArmWeight : MonoBehaviour
         // 붙일 위치 정하기 (position)
         Vector3 posA = ConnectedBody.transform.position;
         float rotZ = ConnectedBody.transform.eulerAngles.z;
-        float dist = ConnectedBody.GetComponent<SpriteRenderer>().bounds.size.x + GetComponent<SpriteRenderer>().bounds.size.x;
+        float dist = (ParentRatio + MyRatio) * 2;
 
         Vector3 offset = new Vector3(0, 0, 0);
 

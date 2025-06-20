@@ -9,10 +9,23 @@ public class UnattachedArmWeight : MonoBehaviour
     void Start()
     {
         player = GameManager.Instance.Player;
+        float x = gameObject.GetComponent<SpriteRenderer>().bounds.size.x;
+        Debug.Log(x);
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        int armWeightType = 0;
+        string tag = gameObject.tag;
+        switch (tag)
+        {
+            case "ArmWeight1": armWeightType = 0; break;
+            case "ArmWeight2": armWeightType = 1; break;
+            case "ArmWeight3": armWeightType = 2; break;
+            case "ArmWeight4": armWeightType = 3; break;
+            default: armWeightType = 0; break;
+        }
+
         if (collision.gameObject.CompareTag("Player"))
         {
             // 1. 충돌 지점 얻기
@@ -38,20 +51,20 @@ public class UnattachedArmWeight : MonoBehaviour
             float minDist = Mathf.Min(distTopRight, distBottomRight, distTopLeft, distBottomLeft);
 
             // LA
-            if (minDist == distTopLeft) player.GetComponent<Player>().AttachArmWeight(0);
+            if (minDist == distTopLeft) player.GetComponent<Player>().AttachArmWeight(0, armWeightType);
             // RA
-            else if (minDist == distTopRight) player.GetComponent<Player>().AttachArmWeight(1);
+            else if (minDist == distTopRight) player.GetComponent<Player>().AttachArmWeight(1, armWeightType);
             // LL
-            else if (minDist == distBottomLeft) player.GetComponent<Player>().AttachArmWeight(2);
+            else if (minDist == distBottomLeft) player.GetComponent<Player>().AttachArmWeight(2, armWeightType);
             // RL
-            else player.GetComponent<Player>().AttachArmWeight(3);
+            else player.GetComponent<Player>().AttachArmWeight(3, armWeightType);
 
             Destroy(gameObject);
         }
-        else if (collision.gameObject.CompareTag("LeftArm")) { player.GetComponent<Player>().AttachArmWeight(0); Destroy(gameObject); }
-        else if (collision.gameObject.CompareTag("RightArm")) { player.GetComponent<Player>().AttachArmWeight(1); Destroy(gameObject); }
-        else if (collision.gameObject.CompareTag("LeftLeg")) { player.GetComponent<Player>().AttachArmWeight(2); Destroy(gameObject); }
-        else if (collision.gameObject.CompareTag("RightLeg")) { player.GetComponent<Player>().AttachArmWeight(3); Destroy(gameObject); }
+        else if (collision.gameObject.CompareTag("LeftArm")) { player.GetComponent<Player>().AttachArmWeight(0, armWeightType); Destroy(gameObject); }
+        else if (collision.gameObject.CompareTag("RightArm")) { player.GetComponent<Player>().AttachArmWeight(1, armWeightType); Destroy(gameObject); }
+        else if (collision.gameObject.CompareTag("LeftLeg")) { player.GetComponent<Player>().AttachArmWeight(2, armWeightType); Destroy(gameObject); }
+        else if (collision.gameObject.CompareTag("RightLeg")) { player.GetComponent<Player>().AttachArmWeight(3, armWeightType); Destroy(gameObject); }
 
     }
 }
