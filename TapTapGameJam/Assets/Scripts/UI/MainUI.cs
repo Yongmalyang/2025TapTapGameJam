@@ -10,12 +10,12 @@ public class MainUI : MonoBehaviour
 
     void Start()
     {
-        backPart = " / "+GameManager.Instance.goalWeight[GameManager.Instance.curStageNum].ToString();
-        weightText.text = "0" + backPart;
+        Init();
     }
 
-    private void OnEnable()
+    public void Init()
     {
+        backPart = " / " + GameManager.Instance.goalWeight[GameManager.Instance.curStageNum].ToString();
         weightText.text = "0" + backPart;
     }
 

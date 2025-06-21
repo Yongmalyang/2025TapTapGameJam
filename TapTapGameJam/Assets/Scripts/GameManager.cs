@@ -90,7 +90,7 @@ public class GameManager : MonoBehaviour
             .OnComplete(() => {
                 gameOver.ShowGameOverPanel();
             });
-        ResetAndClearStage();
+        ClearStage();
     }
 
     public void StageClear()
@@ -101,31 +101,43 @@ public class GameManager : MonoBehaviour
             .OnComplete(() => {
                 stageClear.ShowGameOverPanel();
             });
-        ResetAndClearStage();
+        ClearStage();
     }
 
     // 지금까지 했던거 다 지우기
-    public void ResetAndClearStage()
+    public void ClearStage()
     {
         spawner.DestroyAllInScene();
-        resetter.stageMonsters[curStageNum].SetActive(false);
+        resetter.ClearStageMonsters(curStageNum);
+    }
+
+    public void ResetStage()
+    {
+        spawner.isSpawn = true;
+        resetter.ResetStageMonsters(curStageNum);
+        Time.timeScale = 1f;
+        mainUI.Init();
+        resetter.Reset();
     }
 
     // 재시작
     public void ReplayCurrentStage()
     {
         Debug.Log("재시작");
+        ResetStage();
+
         Player.transform.DOMove(new Vector3(0f, 9f, 0f), 1f)
-            .SetEase(Ease.OutBounce);
-        spawner.isSpawn = true;
-        resetter.stageMonsters[curStageNum].SetActive(true);
-        Time.timeScale = 1f;
+            .SetEase(Ease.InOutSine);
     }
 
     // 넘어가기
     public void MoveOnToNextStage()
     {
         Debug.Log("넘어가기");
+
+        curStageNum++;
+        ResetStage();
+
         mainCamera.GetComponent<MainCamera>().isFollowingPlayer = false;
         mainCamera.gameObject.transform.position = new Vector3(0f, 9f, -10f);
         Player.transform.position = new Vector3(0f, 9f, 0f);
@@ -142,11 +154,5 @@ public class GameManager : MonoBehaviour
                     mainCamera.GetComponent<MainCamera>().isFollowingPlayer = true;
                 });
             });
-        spawner.isSpawn = true;
-        curStageNum++;
-        
-        resetter.stageMonsters[curStageNum].SetActive(true);
-        Time.timeScale = 1f;
-
     }
 }

@@ -99,6 +99,7 @@ public class Player : MonoBehaviour
         int addedWeight = ArmWeightPrefab[armWeightType].GetComponent<ArmWeight>().weight;
         GameManager.Instance.curPlayerWeight += addedWeight;
         GameManager.Instance.mainUI.UpdateUIText(GameManager.Instance.curPlayerWeight);
+        GameManager.Instance.resetter.CheckForMiddleWallBreak();
 
         int curStage = GameManager.Instance.curStageNum;
         if (GameManager.Instance.curPlayerWeight >= GameManager.Instance.goalWeight[curStage])
