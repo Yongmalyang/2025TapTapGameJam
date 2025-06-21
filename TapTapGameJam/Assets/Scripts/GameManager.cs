@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public Spawner spawner;
     public MainUI mainUI;
     public StageResetter resetter;
+    public AudioManager audioManager;
 
     public float oxygenAmount;
     public float maxOxygen;
@@ -165,6 +166,7 @@ public class GameManager : MonoBehaviour
             mainUI.gameObject.SetActive(true);
             ResetStage();
         });
+        audioManager.DiveIntoDeepWaters();
     }
 
 

@@ -18,6 +18,7 @@ public class PlayerUI : MonoBehaviour
 
     public void GiveWarning(GameObject target)
     {
+        GameManager.Instance.audioManager.Warning();
         if (warning == null || target == null || GameManager.Instance?.Player == null)
             return;
 
