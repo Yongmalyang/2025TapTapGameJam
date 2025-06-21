@@ -7,8 +7,10 @@ public class ArmWeight : MonoBehaviour
 {
     [SerializeField]
     private float ratio;
+    // LA, RA, LL, RL
+    private List<Vector2> armOffset = new List<Vector2> { new Vector2(-0.398f, -0.306f), new Vector2(0.305f, -0.319f), new Vector2(-0.217f, -0.673f), new Vector2(0.118f, -0.678f)};
 
-    public void AttatchSelfToArm(GameObject ConnectedBody, bool isFirstArm, bool isLeft)
+    public void AttatchSelfToArm(GameObject ConnectedBody, bool isFirstArm, int armIndex)
     {
         Rigidbody2D ConnectedRB = ConnectedBody.GetComponent<Rigidbody2D>();
 
@@ -21,33 +23,21 @@ public class ArmWeight : MonoBehaviour
 
         // 붙일 접합면 정하기 (anchor)
         float MyRatio = ratio;
-        float ParentRatio=0;
 
-        if (isFirstArm) ParentRatio = GameManager.Instance.Player.GetComponent<Player>().playerRatio;
-        else ParentRatio = ConnectedBody.GetComponent<ArmWeight>().ratio;
+        hinge.anchor = new Vector2(0, MyRatio);
+        distance.anchor = new Vector2(0, MyRatio);
 
-        // 왼쪽에 붙일지 오른쪽에 붙일지
-        float finalAnchor = 0;
-
-        if (isLeft) finalAnchor = - ParentRatio - MyRatio;
-        else finalAnchor = ParentRatio + MyRatio;
-
-        hinge.connectedAnchor = new Vector2(finalAnchor, hinge.connectedAnchor.y);
-        distance.connectedAnchor = new Vector2(finalAnchor, distance.connectedAnchor.y);
-
-        // 붙일 위치 정하기 (position)
-        Vector3 posA = ConnectedBody.transform.position;
-        float rotZ = ConnectedBody.transform.eulerAngles.z;
-        float dist = (ParentRatio + MyRatio) * 2;
-
-        Vector3 offset = new Vector3(0, 0, 0);
-
-        if (isLeft) offset = Quaternion.Euler(0, 0, rotZ) * Vector3.left * dist;
-        else offset = Quaternion.Euler(0, 0, rotZ) * Vector3.right * dist;
-
-        Vector3 posB = posA + offset;
-
-        transform.position = posB;
+        if (isFirstArm)
+        {
+            hinge.connectedAnchor = armOffset[armIndex];
+            distance.connectedAnchor = armOffset[armIndex];
+        }
+        else
+        {
+            hinge.connectedAnchor = new Vector2(0, -ConnectedBody.GetComponent<ArmWeight>().ratio);
+            distance.connectedAnchor = new Vector2(0, -ConnectedBody.GetComponent<ArmWeight>().ratio);
+        }
+        
     }
 
 }

@@ -422,7 +422,7 @@ GameObject:
   - component: {fileID: 7949048773886418839}
   - component: {fileID: 2616495065273662392}
   - component: {fileID: 4721006066845151233}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -576,7 +576,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   floatForce: 5
-  playerRatio: 0.5
   UI: {fileID: 2175500077581526867}
   ArmWeightPrefab:
   - {fileID: 2104184593976822049, guid: 605155b83eb86a74eb4bdc56a468749b, type: 3}

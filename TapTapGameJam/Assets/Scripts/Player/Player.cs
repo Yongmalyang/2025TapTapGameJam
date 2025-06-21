@@ -5,8 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
 {
-    public float floatForce = 2f;        // �������� ��
-    public float playerRatio;        // �������� ��
+    public float floatForce = 2f;        // 떠오르는힘
     public PlayerUI UI;
 
     private Rigidbody2D rb;
@@ -62,14 +61,12 @@ public class Player : MonoBehaviour
                 armTag = "RightArm";
                 break;
             case 2: //LL
-                //mainArm = LeftLeg;
-                mainArm = LeftArm;
-                armTag = "LeftArm";
+                mainArm = LeftLeg;
+                armTag = "LeftLeg";
                 break;
             case 3: //RL
-                //mainArm = RightLeg;
-                mainArm = RightArm;
-                armTag = "RightArm";
+                mainArm = RightLeg;
+                armTag = "RightLeg";
                 break;
             default:
                 mainArm = LeftArm;
@@ -83,20 +80,20 @@ public class Player : MonoBehaviour
 
         int childCount = mainArm.transform.childCount;
 
-        // �̹� �����Ǿ �پ��ִ� ���������� �� ����
-        // �̹� ���������ϱ� �ڽ� 1��
+        // 이미 생성되어서 붙어있는 시점에서의 팔 개수
+        // 즉 이미 부착했으니까 팔 1개
 
-        // ¦���� isLeft�� true
+        // 짝수면 isLeft가 true
         if (childCount == 1)
         {
-            // �ڱ� �ڽſ��� ���̱�
-            armWeight.GetComponent<ArmWeight>().AttatchSelfToArm(gameObject, true, index % 2 == 0);
+            // 자기 자신에게 붙이기
+            armWeight.GetComponent<ArmWeight>().AttatchSelfToArm(gameObject, true, index);
         }
         else if (childCount > 1)
         {
-            // ������ �ȿ� ���̱�, �� ���� ģ��
+            // 마지막 팔에 붙이기, 내 직전 친구
             GameObject nthChild = mainArm.transform.GetChild(childCount - 2).gameObject;
-            armWeight.GetComponent<ArmWeight>().AttatchSelfToArm(nthChild, false, index % 2 == 0);
+            armWeight.GetComponent<ArmWeight>().AttatchSelfToArm(nthChild, false, index);
         }
     }
 }
