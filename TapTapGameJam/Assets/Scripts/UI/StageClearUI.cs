@@ -30,6 +30,7 @@ public class StageClearUI : MonoBehaviour
         else
         {
             clearTextTarget.sprite = clearTextSprite[stageNum];
+            clearTextTarget.gameObject.SetActive(true);
             NextButton.gameObject.SetActive(true);
         }
 
