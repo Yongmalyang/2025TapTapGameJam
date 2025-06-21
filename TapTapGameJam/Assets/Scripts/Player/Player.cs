@@ -1,12 +1,12 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Player : MonoBehaviour
 {
-    public float floatForce = 2f;            // ¶°¿À¸£´Â Èû
-    public float playerRatio;                // ÇÃ·¹ÀÌ¾îÀÇ ¹«°Ô³ª ºñÀ² µî
+    public float floatForce = 2f;        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
+    public float playerRatio;        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
     public PlayerUI UI;
 
     private Rigidbody2D rb;
@@ -22,8 +22,6 @@ public class Player : MonoBehaviour
     [SerializeField]
     private GameObject RightLeg;
 
-    private Vector2 inputDirection;
-
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -31,26 +29,18 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        // Å° ÀÔ·Â ¹Þ¾ÆµÎ±â¸¸ ÇÔ (FixedUpdate¿¡¼­ »ç¿ë)
-        inputDirection = Vector2.zero;
-
-        if (Input.GetKey(KeyCode.A)) inputDirection += Vector2.left;
-        if (Input.GetKey(KeyCode.D)) inputDirection += Vector2.right;
-        if (Input.GetKey(KeyCode.W)) inputDirection += Vector2.up;
-        if (Input.GetKey(KeyCode.S)) inputDirection += Vector2.down;
+        if (Input.GetKey(KeyCode.A)) MovePlayer(-1, 1, 5f);
+        if (Input.GetKey(KeyCode.D)) MovePlayer(1, 1, -5f);
+        if (Input.GetKey(KeyCode.W)) MovePlayer(0, 1, 0);
+        if (Input.GetKey(KeyCode.S)) MovePlayer(0, -1, 0);
     }
 
-    void FixedUpdate()
+    void MovePlayer(float dirX, float dirY, float rotateZ)
     {
-        rb.velocity = inputDirection.normalized * floatForce;
+        rb.velocity = new Vector2(dirX * floatForce, dirY * floatForce);
+        Quaternion targetRot = Quaternion.Euler(0, 0, rotateZ);
+        transform.localRotation = Quaternion.Lerp(transform.localRotation, targetRot, Time.deltaTime * 5f);
 
-        // ÀÌµ¿ ÁßÀÏ ¶§¸¸ È¸Àü
-        if (inputDirection != Vector2.zero)
-        {
-            float angle = Mathf.Atan2(inputDirection.y, inputDirection.x) * Mathf.Rad2Deg;
-            Quaternion targetRot = Quaternion.Euler(0, 0, angle);
-            transform.localRotation = Quaternion.Lerp(transform.localRotation, targetRot, Time.fixedDeltaTime * 5f);
-        }
     }
 
     // index: LA, RA, LL, RL
@@ -63,21 +53,23 @@ public class Player : MonoBehaviour
 
         switch (index)
         {
-            case 0: // LA
+            case 0: //LA
                 mainArm = LeftArm;
                 armTag = "LeftArm";
                 break;
-            case 1: // RA
+            case 1: //RA
                 mainArm = RightArm;
                 armTag = "RightArm";
                 break;
-            case 2: // LL
-                mainArm = LeftLeg;
-                armTag = "LeftLeg";
+            case 2: //LL
+                //mainArm = LeftLeg;
+                mainArm = LeftArm;
+                armTag = "LeftArm";
                 break;
-            case 3: // RL
-                mainArm = RightLeg;
-                armTag = "RightLeg";
+            case 3: //RL
+                //mainArm = RightLeg;
+                mainArm = RightArm;
+                armTag = "RightArm";
                 break;
             default:
                 mainArm = LeftArm;
@@ -87,16 +79,22 @@ public class Player : MonoBehaviour
 
         GameObject armWeight = Instantiate(ArmWeightPrefab[armWeightType], mainArm.transform);
         armWeight.tag = armTag;
-
         float armWeightWidth = armWeight.GetComponent<SpriteRenderer>().bounds.size.x;
+
         int childCount = mainArm.transform.childCount;
 
+        // ï¿½Ì¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç¾î¼­ ï¿½Ù¾ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+        // ï¿½Ì¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½Ú½ï¿½ 1ï¿½ï¿½
+
+        // Â¦ï¿½ï¿½ï¿½ï¿½ isLeftï¿½ï¿½ true
         if (childCount == 1)
         {
+            // ï¿½Ú±ï¿½ ï¿½Ú½Å¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì±ï¿½
             armWeight.GetComponent<ArmWeight>().AttatchSelfToArm(gameObject, true, index % 2 == 0);
         }
         else if (childCount > 1)
         {
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½È¿ï¿½ ï¿½ï¿½ï¿½Ì±ï¿½, ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ä£ï¿½ï¿½
             GameObject nthChild = mainArm.transform.GetChild(childCount - 2).gameObject;
             armWeight.GetComponent<ArmWeight>().AttatchSelfToArm(nthChild, false, index % 2 == 0);
         }

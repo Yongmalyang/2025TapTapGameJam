@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 9108300884801680791}
   - component: {fileID: 5614554460754327368}
   - component: {fileID: 3027458545959026459}
-  - component: {fileID: 7343888553385630047}
   - component: {fileID: 8681000304194483851}
   m_Layer: 0
   m_Name: Fish
@@ -104,6 +103,7 @@ MonoBehaviour:
   damageEffectPrefab: {fileID: 8514459517454608557, guid: 0b380defa83d32049b17cdb770b72b34, type: 3}
   oxygenDamage: 10
   moveSpeed: 2
+  moveRange: 3
 --- !u!61 &3027458545959026459
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -136,46 +136,19 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.15}
+  m_Offset: {x: 0, y: 0.05}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.0029328, y: 3}
+    oldSize: {x: 1.2011731, y: 1.2}
     newSize: {x: 1, y: 0.5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 1.2}
+  m_Size: {x: 0.7, y: 0.5}
   m_EdgeRadius: 0
---- !u!50 &7343888553385630047
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8411218309168899985}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 0.0001
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 6
 --- !u!95 &8681000304194483851
 Animator:
   serializedVersion: 5
