@@ -11,7 +11,7 @@ public class AnglerFish : BaseMonster
     public Collider2D mouthCollider;
 
     public float suctionRadius = 20f;
-    public float suctionForce = 10f;
+    public float suctionForce = 20f;
     public float suctionDuration = 5f;
     public float attackCooldown = 10f;
 
@@ -107,18 +107,5 @@ public class AnglerFish : BaseMonster
         isAttacking = false;
     }
 
-    private void OnTrigger2D(Collider2D other)
-    {
-        string[] armTags = { "ArmWeight1", "ArmWeight2", "ArmWeight3", "ArmWeight4" };
 
-        foreach (string tag in armTags)
-        {
-            if (other.CompareTag(tag))
-            {
-                Destroy(other.gameObject);
-            }
-        }
-
-        
-    }
 }
