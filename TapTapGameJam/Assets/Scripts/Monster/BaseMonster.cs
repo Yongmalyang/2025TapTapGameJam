@@ -29,6 +29,8 @@ public abstract class BaseMonster : MonoBehaviour
 
     public virtual void AttackPlayer(float amount)
     {
+        GameManager.Instance.oxygenAmount -= oxygenDamage;
+        GameManager.Instance.Player.GetComponent<Player>().UI.UpdateOxygenUI(GameManager.Instance.oxygenAmount); 
         ShowDamageEffect(GameManager.Instance.Player.transform.position, amount);
     }
 
@@ -50,7 +52,6 @@ public abstract class BaseMonster : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("~~~~~~~~~~~~~~~~~");
             AttackPlayer(oxygenDamage);
         }
     }
