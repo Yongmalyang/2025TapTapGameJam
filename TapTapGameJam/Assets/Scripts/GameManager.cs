@@ -34,6 +34,8 @@ public class GameManager : MonoBehaviour
     private GameObject BGGroup;
     private List<float> BGPos = new List<float>() { -45, -15, 15, 45 };
 
+    private float playerAndCameraInitPos = 7f;
+    private float camInitZoom = 7f;
 
     private void Awake()
     {
@@ -126,9 +128,9 @@ public class GameManager : MonoBehaviour
         Debug.Log("재시작");
         ResetStage();
 
-        Player.transform.DOMove(new Vector3(0f, 7f, 0f), 1f)
+        Player.transform.DOMove(new Vector3(0f, playerAndCameraInitPos, 0f), 1f)
             .SetEase(Ease.InOutSine);
-        mainCamera.DOOrthoSize(7f, slowDuration)
+        mainCamera.DOOrthoSize(camInitZoom, slowDuration)
             .SetEase(Ease.InOutSine);
     }
 
@@ -138,11 +140,11 @@ public class GameManager : MonoBehaviour
         Debug.Log("넘어가기");
 
         curStageNum++;
-        
+        ResetStage();
 
         mainCamera.GetComponent<MainCamera>().isFollowingPlayer = false;
-        mainCamera.gameObject.transform.position = new Vector3(0f, 7f, -10f);
-        Player.transform.position = new Vector3(0f, 7f, 0f);
+        mainCamera.gameObject.transform.position = new Vector3(0f, playerAndCameraInitPos, -10f);
+        Player.transform.position = new Vector3(0f, playerAndCameraInitPos, 0f);
 
         mainCamera.DOOrthoSize(10f, slowDuration)
             .SetEase(Ease.InOutSine)
@@ -151,14 +153,11 @@ public class GameManager : MonoBehaviour
                 .SetEase(Ease.InOutSine)
                 .OnComplete(() =>
                 {
-                    mainCamera.DOOrthoSize(7f, slowDuration)
-                    .SetEase(Ease.InOutSine)
-                    .OnComplete(() =>
-                    {
-                        mainCamera.GetComponent<MainCamera>().isFollowingPlayer = true;
-                        ResetStage();
-                    });
+                    mainCamera.DOOrthoSize(camInitZoom, slowDuration)
+                    .SetEase(Ease.InOutSine);
+                    mainCamera.GetComponent<MainCamera>().isFollowingPlayer = true;
                 });
             });
     }
+
 }
