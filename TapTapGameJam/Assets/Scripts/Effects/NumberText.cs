@@ -23,15 +23,22 @@ public class NumberText : MonoBehaviour
         // 스케일 애니메이션: 커졌다가 작아짐
         transform.DOScale(originalScale * 1.3f, 0.15f)
             .SetEase(Ease.OutBack)
+            .SetUpdate(true)
             .OnComplete(() => {
-                transform.DOScale(originalScale, 0.15f).SetEase(Ease.InOutSine);
+                transform.DOScale(originalScale, 0.15f)
+                    .SetEase(Ease.InOutSine)
+                    .SetUpdate(true);
             });
 
         // 위로 이동
-        transform.DOMoveY(transform.position.y + moveYAmount, floatDuration).SetEase(Ease.OutQuad);
+        transform.DOMoveY(transform.position.y + moveYAmount, floatDuration)
+            .SetEase(Ease.OutQuad)
+            .SetUpdate(true);
 
         // 페이드 아웃
-        textMesh.DOFade(0f, floatDuration).SetEase(Ease.InQuad);
+        textMesh.DOFade(0f, floatDuration)
+            .SetEase(Ease.InQuad)
+            .SetUpdate(true);
 
         // 다 끝나면 오브젝트 파괴
         Destroy(gameObject, floatDuration);
