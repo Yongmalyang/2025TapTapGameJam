@@ -16,7 +16,7 @@ public class StageClearUI : MonoBehaviour
     public void ShowGameOverPanel()
     {
         gameObject.SetActive(true);
-        stageClearUI.DOFade(0.5f, 1f)
+        stageClearUI.DOFade(1f, 1f)
             .SetEase(Ease.InOutSine)
             .SetUpdate(true); // <- 타임스케일 무시!
     }
