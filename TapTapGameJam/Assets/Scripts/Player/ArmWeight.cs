@@ -29,8 +29,15 @@ public class ArmWeight : MonoBehaviour
 
         if (isFirstArm)
         {
+            
             hinge.connectedAnchor = armOffset[armIndex];
             distance.connectedAnchor = armOffset[armIndex];
+
+            JointAngleLimits2D zerolimits = hinge.limits;
+            zerolimits.min = 0;
+            zerolimits.max = 0;
+            hinge.limits = zerolimits;
+
         }
         else
         {

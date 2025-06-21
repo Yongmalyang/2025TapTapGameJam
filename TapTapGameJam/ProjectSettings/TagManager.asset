@@ -49,3 +49,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Player
+    uniqueID: 3601704255
+    locked: 0
+  - name: ArmWeight
+    uniqueID: 4138031949
+    locked: 0
+  - name: Monster
+    uniqueID: 2761868383
+    locked: 0
