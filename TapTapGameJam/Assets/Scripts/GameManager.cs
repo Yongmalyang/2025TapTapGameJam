@@ -6,6 +6,12 @@ public class GameManager : MonoBehaviour
 
     public GameObject Player; // 여기다 Player 오브젝트 드래그
 
+    public float oxygenAmount;
+    public float maxOxygen;
+    public float oxygenDropRate;
+
+
+
     private void Awake()
     {
         if (Instance != null && Instance != this)

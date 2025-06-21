@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
 {
     public float floatForce = 2f;        // ¶°¿À¸£´Â Èû
     public float playerRatio;        // ¶°¿À¸£´Â Èû
+    public PlayerUI UI;
+
     private Rigidbody2D rb;
 
     [SerializeField]
