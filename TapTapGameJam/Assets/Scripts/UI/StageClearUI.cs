@@ -18,8 +18,12 @@ public class StageClearUI : MonoBehaviour
     public void ShowStageClearPanel(int stageNum)
     {
         gameObject.SetActive(true);
+        foreach (Transform child in transform)
+        {
+            child.gameObject.SetActive(false);
+        }
 
-        if(stageNum == 3)
+        if (stageNum == 3)
         {
             missionCompleteImage.gameObject.SetActive(true);
         }
