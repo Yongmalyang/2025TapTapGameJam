@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -128,6 +129,8 @@ public class GameManager : MonoBehaviour
     public void ReplayCurrentStage()
     {
         Debug.Log("¿ÁΩ√¿€");
+        oxygenAmount = maxOxygen;
+        Player.GetComponent<Player>().DestroyAllArmWeight();
         ResetStage();
 
         Player.transform.DOMove(new Vector3(0f, playerAndCameraInitPos, 0f), 1f)
@@ -171,5 +174,8 @@ public class GameManager : MonoBehaviour
         audioManager.DiveIntoDeepWaters();
     }
 
-
+    public void BackToMain()
+    {
+        SceneManager.LoadScene("Start");
+    }
 }

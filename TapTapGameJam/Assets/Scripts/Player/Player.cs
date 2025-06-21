@@ -110,4 +110,19 @@ public class Player : MonoBehaviour
 
         GameManager.Instance.audioManager.GetWeight(); 
     }
+
+    public void DestroyAllArmWeight()
+    {
+        List<GameObject> limbs = new List<GameObject> { LeftArm, RightArm, LeftLeg, RightLeg };
+
+        foreach (GameObject limb in limbs)
+        {
+            if (limb == null) continue;
+
+            foreach (Transform child in limb.transform)
+            {
+                Destroy(child.gameObject);
+            }
+        }
+    }
 }
