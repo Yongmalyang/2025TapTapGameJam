@@ -22,10 +22,13 @@ public class JellyFish : BaseMonster
     private bool isAttacking = false;
     private bool isMoving = false;
 
+    private Animator animator;
+
     protected override void Start()
     {
         base.Start();
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameManager.Instance.Player.transform;
+        animator = GetComponent<Animator>();
         StartCoroutine(MoveRoutine());
     }
 
@@ -36,7 +39,10 @@ public class JellyFish : BaseMonster
             if (isMoving || isAttacking) yield return null;
             isMoving = true;
 
-            // 플레이어 거리 체크
+            // 애니메이션 상태: 이동 중
+            animator.SetBool("IsMoving", true);
+            animator.SetBool("IsStopped", false);
+
             float distanceToPlayer = Vector2.Distance(transform.position, player.position);
             bool canAttack = Time.time >= lastAttackTime + attackCooldown;
 
@@ -46,7 +52,6 @@ public class JellyFish : BaseMonster
                 yield break;
             }
 
-            // 일반 유영 루틴
             Vector2 moveDir = Random.insideUnitCircle.normalized;
             float angle = Vector2.SignedAngle(Vector2.up, moveDir);
             transform.DORotate(new Vector3(0f, 0f, angle), 0.5f).SetEase(Ease.InOutSine);
@@ -59,12 +64,16 @@ public class JellyFish : BaseMonster
         }
     }
 
+
     private IEnumerator AttackRoutine()
     {
         isAttacking = true;
-        lastAttackTime = Time.time; // 쿨타임 갱신
+        lastAttackTime = Time.time;
 
-        // 1. 조준 단계 (1초 동안 계속 플레이어 바라보기)
+        // 애니메이션 상태: 멈춤 (조준 시작)
+        animator.SetBool("IsMoving", false);
+        animator.SetBool("IsStopped", true);
+
         float timer = 0f;
         while (timer < aimDuration)
         {
@@ -75,21 +84,29 @@ public class JellyFish : BaseMonster
             yield return null;
         }
 
-        // 2. 부들부들 떨기 (shake)
+        // 떨기 연출 (Stop 애니메이션 유지 중)
         yield return transform.DOShakePosition(shakeDuration, 0.1f, 20, 90, false, false)
             .SetEase(Ease.Linear).WaitForCompletion();
 
-        // 3. 돌진 (이 시점에서 플레이어 위치 고정)
+        // Attack 트리거 발동 → Attack → Stop(자동 전환)
+        animator.SetTrigger("Attack");
+
         Vector3 rushTarget = player.position;
         Vector2 rushDir = (rushTarget - transform.position).normalized;
-        float rushDistance = 10f; // 충분히 긴 거리 돌진
-
+        float rushDistance = 10f;
         Vector3 finalTarget = transform.position + (Vector3)(rushDir * rushDistance);
+
         transform.DOMove(finalTarget, 1f / rushSpeed).SetEase(Ease.OutQuad);
 
-        // 돌진 후 다시 이동 루틴 시작
+        // 돌진 후 Stop 애니메이션 1초 유지
         yield return new WaitForSeconds(1f);
+        animator.SetBool("IsStopped", true);
+        animator.SetBool("IsMoving", false);
+
+        // 다시 유영
         isAttacking = false;
         StartCoroutine(MoveRoutine());
     }
+
+
 }

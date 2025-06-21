@@ -3,7 +3,7 @@ using UnityEngine;
 public class Fish : BaseMonster
 {
     public float moveSpeed = 2f;
-    private bool movingRight = true; // 기본 방향은 오른쪽
+    private bool movingRight = false; // 기본 방향은 왼쪽
 
     protected override void Start()
     {
@@ -13,13 +13,15 @@ public class Fish : BaseMonster
 
     private void Update()
     {
-        float dir = movingRight ? 1 : -1;
-        transform.Translate(Vector2.right * moveSpeed * Time.deltaTime * dir);
+        transform.Translate(transform.right * moveSpeed * Time.deltaTime);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Fish Hit!!!!");
+        // 플레이어와 충돌 시에는 BaseMonster에서 처리됨, Fish에서는 무시
+        if (collision.gameObject.CompareTag("Player")) return;
+
+        // 나머지 오브젝트들과 충돌하면 방향 반전
         ReverseDirection();
     }
 
