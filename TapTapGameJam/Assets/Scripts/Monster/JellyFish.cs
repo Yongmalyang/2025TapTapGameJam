@@ -34,7 +34,6 @@ public class JellyFish : BaseMonster
     protected override void Start()
     {
         base.Start();
-        oxygenDamage = jellyfishDamage;
         player = GameManager.Instance.Player.transform;
         animator = GetComponent<Animator>();
         StartCoroutine(MoveRoutine());
@@ -107,7 +106,6 @@ public class JellyFish : BaseMonster
         // 돌진 상태 진입
         isRushing = true;
         canDealDamage = true;
-        oxygenDamage = jellyfishDamage_dash;
 
         transform.DOMove(finalTarget, 1f / rushSpeed)
             .SetEase(Ease.OutQuad)
@@ -115,7 +113,6 @@ public class JellyFish : BaseMonster
             {
                 isRushing = false;
                 canDealDamage = false;
-                oxygenDamage = jellyfishDamage;
             });
 
         yield return new WaitForSeconds(1f);
@@ -148,27 +145,23 @@ public class JellyFish : BaseMonster
     {
         if (!collision.gameObject.CompareTag("Player")) return;
 
-        if (canDealDamage)
+        if (!canDealDamage) return;
+
+        // 돌진 중일 때는 더 큰 데미지
+        if (isRushing)
         {
-            AttackPlayer(oxygenDamage);
-
-            if (isRushing)
-            {
-                // 돌진 중 데미지 주면 쿨타임 갱신
-                lastAttackTime = Time.time;
-            }
-
-            canDealDamage = false;
+            AttackPlayer(jellyfishDamage_dash);
+            Debug.Log("돌진 데미지 적용");
         }
         else
         {
-            // 기본 상태 충돌일 때 쿨타임이 지났는지 검사
-            if (!isAttacking && Time.time >= lastAttackTime + attackCooldown)
-            {
-                AttackPlayer(jellyfishDamage);
-                lastAttackTime = Time.time;
-                canDealDamage = false;
-            }
+            AttackPlayer(jellyfishDamage);
+            Debug.Log("기본 데미지 적용");
         }
+
+        // 데미지는 한 번만 적용되도록 플래그 끔
+        canDealDamage = false;
+        lastAttackTime = Time.time;
     }
+
 }

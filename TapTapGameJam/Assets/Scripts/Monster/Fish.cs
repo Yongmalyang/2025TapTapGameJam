@@ -14,7 +14,6 @@ public class Fish : BaseMonster
     protected override void Start()
     {
         base.Start();
-        oxygenDamage = fishDamage;
         group = GetComponentInParent<FishGroup>();
     }
 

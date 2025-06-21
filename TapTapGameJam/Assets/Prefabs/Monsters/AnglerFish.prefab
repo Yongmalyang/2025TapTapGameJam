@@ -168,13 +168,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 100
   damageEffectPrefab: {fileID: 0}
-  oxygenDamage: 0
   hidePosition: {fileID: 0}
   attackPosition: {fileID: 0}
   mouthPoint: {fileID: 2447604607716137341}
   mouthCollider: {fileID: 7892836651262548219}
   suctionRadius: 20
-  suctionForce: 20
+  suctionForce: 10
   suctionDuration: 5
   attackCooldown: 10
 --- !u!1 &5920543237106137452

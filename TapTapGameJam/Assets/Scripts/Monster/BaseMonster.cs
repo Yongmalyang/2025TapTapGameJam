@@ -11,7 +11,7 @@ public abstract class BaseMonster : MonoBehaviour
     [Header("Damage Effect")]
     public GameObject damageEffectPrefab; // TextMeshPro 텍스트 이펙트 프리팹
 
-    public float oxygenDamage;
+    //public float oxygenDamage;
 
     protected virtual void Start()
     {
@@ -30,7 +30,7 @@ public abstract class BaseMonster : MonoBehaviour
     public virtual void AttackPlayer(float amount)
     {
         // 최솟값 0 유지
-        GameManager.Instance.oxygenAmount -= oxygenDamage;
+        GameManager.Instance.oxygenAmount -= amount;
         // UI 반영
         GameManager.Instance.Player.GetComponent<Player>().UI.UpdateOxygenUI(GameManager.Instance.oxygenAmount);
         // 0보다 작아지면 게임오버
