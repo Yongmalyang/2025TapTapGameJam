@@ -93,6 +93,8 @@ public class JellyFish : BaseMonster
         canDealDamage = false;
         lastAttackTime = Time.time;
 
+        GameManager.Instance.Player.GetComponent<Player>().UI.GiveWarning(gameObject);
+
         yield return transform.DOShakePosition(shakeDuration, 0.1f, 20, 90, false, false)
             .SetEase(Ease.Linear).WaitForCompletion();
 

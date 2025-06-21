@@ -41,6 +41,7 @@ public class GiantOctopus : BaseMonster
             {
                 // 💥 크리티컬 연출 시작
                 Debug.Log("💥 대왕문어 치명타!!!");
+                GameManager.Instance.Player.GetComponent<Player>().UI.GiveWarning(gameObject);
 
                 animator.speed = 0f; // 애니메이션 멈춤
 

@@ -40,6 +40,8 @@ public class AnglerFish : BaseMonster
         isAttacking = true;
 
         animator.SetBool("isAttack", true);
+        GameManager.Instance.Player.GetComponent<Player>().UI.GiveWarning(gameObject);
+
 
         // 1. 등장 (트윈 이동)
         Sequence appearSeq = DOTween.Sequence();

@@ -5,7 +5,6 @@ using DG.Tweening;
 public class PlayerUI : MonoBehaviour
 {
     [SerializeField] private Image warning;         // 경고 느낌표 이미지
-    [SerializeField] private float warningOffset = 0.1f; // 플레이어 기준 거리
 
     [SerializeField]
     private Slider slider;
@@ -21,16 +20,6 @@ public class PlayerUI : MonoBehaviour
         GameManager.Instance.audioManager.Warning();
         if (warning == null || target == null || GameManager.Instance?.Player == null)
             return;
-
-        // 1. 위치 계산: 플레이어 → 타겟 방향으로 0.1f 만큼 떨어진 위치
-        Vector3 playerPos = GameManager.Instance.Player.transform.position;
-        Vector3 targetPos = target.transform.position;
-
-        Vector3 dir = (targetPos - playerPos).normalized;
-        Vector3 warningPos = playerPos + dir * warningOffset;
-
-        // 2. 위치 적용 (2D 환경, Overlay 모드이므로 바로 위치 설정)
-        warning.rectTransform.position = warningPos;
 
         // 3. 불투명도 초기화
         Color color = warning.color;
