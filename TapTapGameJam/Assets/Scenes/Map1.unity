@@ -671,7 +671,8 @@ MonoBehaviour:
   oxygenDropRate: 2
   gameOver: {fileID: 970840169}
   slowDuration: 1.5
-  wallGroup: {fileID: 1548289510}
+  minBounds: {x: -9, y: -10}
+  maxBounds: {x: 9, y: 10}
 --- !u!4 &861628862
 Transform:
   m_ObjectHideFlags: 0
