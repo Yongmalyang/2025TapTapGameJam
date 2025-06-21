@@ -95,5 +95,18 @@ public class Player : MonoBehaviour
             GameObject nthChild = mainArm.transform.GetChild(childCount - 2).gameObject;
             armWeight.GetComponent<ArmWeight>().AttatchSelfToArm(nthChild, false, index);
         }
+
+        int addedWeight = ArmWeightPrefab[armWeightType].GetComponent<ArmWeight>().weight;
+        GameManager.Instance.curPlayerWeight += addedWeight;
+        GameManager.Instance.mainUI.UpdateUIText(GameManager.Instance.curPlayerWeight);
+
+        int curStage = GameManager.Instance.curStageNum;
+        if (GameManager.Instance.curPlayerWeight >= GameManager.Instance.goalWeight[curStage])
+        {
+            Debug.Log("clear stage");
+            GameManager.Instance.ResetAndGoToNextStage();
+        }
+            
+            
     }
 }

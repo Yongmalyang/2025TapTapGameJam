@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -8,6 +9,7 @@ public class GameManager : MonoBehaviour
     public GameObject Player; // 여기다 Player 오브젝트 드래그
     public Camera mainCamera;
     public Spawner spawner;
+    public MainUI mainUI;
 
     public float oxygenAmount;
     public float maxOxygen;
@@ -24,6 +26,8 @@ public class GameManager : MonoBehaviour
     private Vector2 maxBounds;
 
     public int curStageNum;
+    public int curPlayerWeight = 0;
+    public List<int> goalWeight = new List<int>() { 20, 30, 50, 100 };
 
     private void Awake()
     {
@@ -77,5 +81,10 @@ public class GameManager : MonoBehaviour
             .OnComplete(() => {
                 gameOver.ShowGameOverPanel();
             });
+    }
+
+    public void ResetAndGoToNextStage()
+    {
+
     }
 }

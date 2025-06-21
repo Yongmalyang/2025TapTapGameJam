@@ -7,6 +7,7 @@ public class ArmWeight : MonoBehaviour
 {
     [SerializeField]
     private float ratio;
+    public int weight;
     // LA, RA, LL, RL
     private List<Vector2> armOffset = new List<Vector2> { new Vector2(-0.398f, -0.306f), new Vector2(0.305f, -0.319f), new Vector2(-0.217f, -0.673f), new Vector2(0.118f, -0.678f)};
     private List<float> rotationOffset = new List<float> { -83, 83, -15, 15 };

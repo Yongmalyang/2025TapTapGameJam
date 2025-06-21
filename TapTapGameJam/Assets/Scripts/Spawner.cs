@@ -73,5 +73,6 @@ public class Spawner : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
+        monsterHolder.SetActive(false);
     }
 }
