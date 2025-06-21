@@ -10,13 +10,16 @@ public class GameManager : MonoBehaviour
     public Camera mainCamera;
     public Spawner spawner;
     public MainUI mainUI;
+    public StageResetter resetter;
 
     public float oxygenAmount;
     public float maxOxygen;
     public float oxygenDropRate;
 
     [SerializeField]
-    private GameOver gameOver;
+    private GameOverUI gameOver;
+    [SerializeField]
+    private StageClearUI stageClear;
 
     public float slowDuration = 1.5f;
 
@@ -27,10 +30,12 @@ public class GameManager : MonoBehaviour
 
     public int curStageNum;
     public int curPlayerWeight = 0;
-    public List<int> goalWeight = new List<int>() { 20, 30, 50, 100 };
+    public List<int> goalWeight = new List<int>() { 5, 30, 50, 100 };
 
     [SerializeField]
-    private GameObject BGGroup; 
+    private GameObject BGGroup;
+    private List<float> BGPos = new List<float>() { -45, -15, 15, 45 };
+
 
     private void Awake()
     {
@@ -46,6 +51,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         oxygenAmount = maxOxygen;
+        curStageNum = 0;
     }
 
     public void SpawnObjectInBounds(GameObject prefabToSpawn, Transform parent)
@@ -84,12 +90,63 @@ public class GameManager : MonoBehaviour
             .OnComplete(() => {
                 gameOver.ShowGameOverPanel();
             });
+        ResetAndClearStage();
     }
 
+    public void StageClear()
+    {
+        DOTween.To(() => Time.timeScale, x => Time.timeScale = x, 0f, slowDuration)
+            .SetEase(Ease.InQuad)
+            .SetUpdate(true) // Time.timeScale에도 적용되도록
+            .OnComplete(() => {
+                stageClear.ShowGameOverPanel();
+            });
+        ResetAndClearStage();
+    }
 
-
-    public void ResetAndGoToNextStage()
+    // 지금까지 했던거 다 지우기
+    public void ResetAndClearStage()
     {
         spawner.DestroyAllInScene();
+        resetter.stageMonsters[curStageNum].SetActive(false);
+    }
+
+    // 재시작
+    public void ReplayCurrentStage()
+    {
+        Debug.Log("재시작");
+        Player.transform.DOMove(new Vector3(0f, 9f, 0f), 1f)
+            .SetEase(Ease.OutBounce);
+        spawner.isSpawn = true;
+        resetter.stageMonsters[curStageNum].SetActive(true);
+        Time.timeScale = 1f;
+    }
+
+    // 넘어가기
+    public void MoveOnToNextStage()
+    {
+        Debug.Log("넘어가기");
+        mainCamera.GetComponent<MainCamera>().isFollowingPlayer = false;
+        mainCamera.gameObject.transform.position = new Vector3(0f, 9f, -10f);
+        Player.transform.position = new Vector3(0f, 9f, 0f);
+
+        mainCamera.DOOrthoSize(10f, slowDuration)
+            .SetEase(Ease.InOutSine)
+            .OnComplete(() => {
+                BGGroup.transform.DOMoveY(BGPos[curStageNum], 2f)
+                .SetEase(Ease.InOutSine)
+                .OnComplete(() =>
+                {
+                    mainCamera.DOOrthoSize(3f, slowDuration)
+                    .SetEase(Ease.InOutSine);
+                    mainCamera.GetComponent<MainCamera>().isFollowingPlayer = true;
+                });
+            });
+        spawner.isSpawn = true;
+        curStageNum++;
+        
+        resetter.stageMonsters[curStageNum].SetActive(true);
+        Time.timeScale = 1f;
+
     }
 }

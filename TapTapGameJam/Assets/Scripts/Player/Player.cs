@@ -104,7 +104,7 @@ public class Player : MonoBehaviour
         if (GameManager.Instance.curPlayerWeight >= GameManager.Instance.goalWeight[curStage])
         {
             Debug.Log("clear stage");
-            GameManager.Instance.ResetAndGoToNextStage();
+            GameManager.Instance.StageClear();
         }
             
             

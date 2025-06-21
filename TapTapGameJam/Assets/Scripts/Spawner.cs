@@ -6,13 +6,11 @@ public class Spawner : MonoBehaviour
 {
     [SerializeField] private GameObject itemHolder;
     [SerializeField] private GameObject areaHolder;
-    [SerializeField] public GameObject monsterHolder;
 
     [SerializeField] private List<GameObject> itemPrefab = new List<GameObject>();
     [SerializeField] private List<GameObject> areaPrefab = new List<GameObject>();
-    [SerializeField] public List<GameObject> monsterPrefab = new List<GameObject>();
 
-    private bool isSpawn = true;
+    public bool isSpawn = true;
     [SerializeField] private float itemCoolTime = 5f;
     [SerializeField] private float areaCoolTime = 15f;
 
@@ -73,6 +71,5 @@ public class Spawner : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
-        monsterHolder.SetActive(false);
     }
 }
