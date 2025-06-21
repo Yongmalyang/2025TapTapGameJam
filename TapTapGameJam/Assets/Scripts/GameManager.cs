@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
         DOTween.To(() => Time.timeScale, x => Time.timeScale = x, 0f, slowDuration)
             .SetEase(Ease.InQuad)
             .SetUpdate(true); // Time.timeScale에도 적용되도록
-        mainCamera.DOOrthoSize(2.5f, slowDuration)
+        mainCamera.DOOrthoSize(1f, slowDuration)
             .SetEase(Ease.InOutSine)
             .OnComplete(() => {
                 gameOver.ShowGameOverPanel();
