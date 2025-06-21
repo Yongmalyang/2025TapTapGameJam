@@ -238,3 +238,4 @@ MonoBehaviour:
   aimDuration: 1
   shakeDuration: 0.5
   rushSpeed: 1
+  attackCooldown: 3

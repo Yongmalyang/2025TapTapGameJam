@@ -3,30 +3,36 @@ using UnityEngine;
 public class Fish : BaseMonster
 {
     public float moveSpeed = 2f;
-    public float moveRange = 3f;
-
-    private Vector3 startPos;
-    private bool movingRight = true;
+    private bool movingRight = false; // 기본 방향은 왼쪽
 
     protected override void Start()
     {
         base.Start();
-        startPos = transform.position;
+        FlipObject(movingRight); // 시작 시 방향 설정
     }
 
     private void Update()
     {
         float dir = movingRight ? 1 : -1;
         transform.Translate(Vector2.right * moveSpeed * Time.deltaTime * dir);
-
-        if (Mathf.Abs(transform.position.x - startPos.x) >= moveRange)
-        {
-            movingRight = !movingRight;
-            Vector3 scale = transform.localScale;
-            scale.x *= -1;
-            transform.localScale = scale;
-        }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("Fish Hit!!!!");
+        ReverseDirection();
+    }
 
+    private void ReverseDirection()
+    {
+        movingRight = !movingRight;
+        FlipObject(movingRight);
+    }
+
+    private void FlipObject(bool faceRight)
+    {
+        Vector3 scale = transform.localScale;
+        scale.x = Mathf.Abs(scale.x) * (faceRight ? 1 : -1);
+        transform.localScale = scale;
+    }
 }
