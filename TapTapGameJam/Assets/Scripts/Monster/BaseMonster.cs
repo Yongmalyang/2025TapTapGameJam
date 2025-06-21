@@ -12,7 +12,7 @@ public abstract class BaseMonster : MonoBehaviour
     public GameObject damageEffectPrefab; // TextMeshPro ≈ÿΩ∫∆Æ ¿Ã∆Â∆Æ «¡∏Æ∆’
 
     public float oxygenDamage;
-    public bool canDealDamage = false;
+    public bool canDealDamage = true;
 
     protected virtual void Start()
     {
@@ -43,9 +43,8 @@ public abstract class BaseMonster : MonoBehaviour
     {
         Vector3 randomOffset = new Vector3(Random.Range(-0.5f, 0.5f), Random.Range(0.5f, 1f), 0f);
         GameObject textObj = Instantiate(damageEffectPrefab, position + randomOffset, Quaternion.identity, GameManager.Instance.Player.GetComponent<Player>().UI.transform);
-        var textMesh = textObj.GetComponentInChildren<TextMeshPro>();
-        if (textMesh != null)
-            textMesh.text = "+" + amount.ToString();
+        var textMesh = textObj.GetComponent<TextMeshProUGUI>();
+        textMesh.text = amount.ToString();
     }
 
     protected virtual void Die()

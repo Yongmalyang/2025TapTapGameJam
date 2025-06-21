@@ -43,10 +43,4 @@ public class NumberText : MonoBehaviour
         // 다 끝나면 오브젝트 파괴
         Destroy(gameObject, floatDuration);
     }
-
-    public void SetText(string value)
-    {
-        if (textMesh == null) textMesh = GetComponent<TextMeshProUGUI>();
-        textMesh.text = value;
-    }
 }
