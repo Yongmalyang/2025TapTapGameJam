@@ -26,10 +26,10 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.A)) MovePlayer(-1, 1, 5f);
-        if (Input.GetKey(KeyCode.D)) MovePlayer(1, 1, -5f);
+        if (Input.GetKey(KeyCode.A)) MovePlayer(-1, 0, 5f);
+        if (Input.GetKey(KeyCode.D)) MovePlayer(1, 0, -5f);
         if (Input.GetKey(KeyCode.W)) MovePlayer(0, 1, 0);
         if (Input.GetKey(KeyCode.S)) MovePlayer(0, -1, 0);
     }

@@ -9,6 +9,7 @@ public class ArmWeight : MonoBehaviour
     private float ratio;
     // LA, RA, LL, RL
     private List<Vector2> armOffset = new List<Vector2> { new Vector2(-0.398f, -0.306f), new Vector2(0.305f, -0.319f), new Vector2(-0.217f, -0.673f), new Vector2(0.118f, -0.678f)};
+    private List<float> rotationOffset = new List<float> { -83, 83, -15, 15 };
 
     public void AttatchSelfToArm(GameObject ConnectedBody, bool isFirstArm, int armIndex)
     {
@@ -29,7 +30,6 @@ public class ArmWeight : MonoBehaviour
 
         if (isFirstArm)
         {
-            
             hinge.connectedAnchor = armOffset[armIndex];
             distance.connectedAnchor = armOffset[armIndex];
 
@@ -38,6 +38,7 @@ public class ArmWeight : MonoBehaviour
             zerolimits.max = 0;
             hinge.limits = zerolimits;
 
+            transform.localRotation = Quaternion.Euler(0f, 0f, rotationOffset[armIndex]);
         }
         else
         {

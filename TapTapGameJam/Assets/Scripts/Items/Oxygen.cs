@@ -51,6 +51,7 @@ public class Oxygen : MonoBehaviour
         while (playerInside && usedCycles < maxCycles)
         {
             GameManager.Instance.oxygenAmount += oxygenPerCycle;
+            if (GameManager.Instance.oxygenAmount > GameManager.Instance.maxOxygen) GameManager.Instance.oxygenAmount = GameManager.Instance.maxOxygen;
             player.UI.UpdateOxygenUI(GameManager.Instance.oxygenAmount);
             SpawnOxygenText(player.transform.position, oxygenPerCycle);
             usedCycles++;
