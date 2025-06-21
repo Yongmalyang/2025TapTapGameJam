@@ -73,9 +73,5 @@ public class Spawner : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
-        foreach (Transform child in monsterHolder.transform)
-        {
-            Destroy(child.gameObject);
-        }
     }
 }
