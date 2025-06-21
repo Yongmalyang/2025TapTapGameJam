@@ -26,6 +26,8 @@ public class JellyFish : BaseMonster
 
     private float jellyfishDamage = 10f;
     private float jellyfishDamage_dash = 20f;
+    public bool canDealDamage = true;
+
 
     protected override void Start()
     {
@@ -120,5 +122,11 @@ public class JellyFish : BaseMonster
         StartCoroutine(MoveRoutine());
     }
 
-
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (canDealDamage && collision.gameObject.CompareTag("Player"))
+        {
+            AttackPlayer(oxygenDamage);
+        }
+    }
 }

@@ -10,7 +10,6 @@ public class UnattachedArmWeight : MonoBehaviour
     {
         player = GameManager.Instance.Player;
         float x = gameObject.GetComponent<SpriteRenderer>().bounds.size.x;
-        Debug.Log(x);
     }
 
     void OnCollisionEnter2D(Collision2D collision)

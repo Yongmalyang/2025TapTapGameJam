@@ -8,6 +8,8 @@ public class Fish : BaseMonster
     private Vector3 startPos;
     private bool movingRight = true;
     private float fishDamage = 10f;
+    public bool canDealDamage = true;
+
 
     protected override void Start()
     {
@@ -30,5 +32,11 @@ public class Fish : BaseMonster
         }
     }
 
-
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (canDealDamage && collision.gameObject.CompareTag("Player"))
+        {
+            AttackPlayer(oxygenDamage);
+        }
+    }
 }

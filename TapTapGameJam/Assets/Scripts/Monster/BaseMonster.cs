@@ -12,7 +12,6 @@ public abstract class BaseMonster : MonoBehaviour
     public GameObject damageEffectPrefab; // TextMeshPro ≈ÿΩ∫∆Æ ¿Ã∆Â∆Æ «¡∏Æ∆’
 
     public float oxygenDamage;
-    public bool canDealDamage = true;
 
     protected virtual void Start()
     {
@@ -52,11 +51,5 @@ public abstract class BaseMonster : MonoBehaviour
         Destroy(gameObject);
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (canDealDamage && collision.gameObject.CompareTag("Player"))
-        {
-            AttackPlayer(oxygenDamage);
-        }
-    }
+
 }
