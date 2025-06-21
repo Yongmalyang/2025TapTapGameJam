@@ -49,6 +49,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 134495841
+    locked: 0
   - name: Player
     uniqueID: 3601704255
     locked: 0
@@ -57,4 +60,7 @@ TagManager:
     locked: 0
   - name: Monster
     uniqueID: 2761868383
+    locked: 0
+  - name: Overlay
+    uniqueID: 3417508567
     locked: 0

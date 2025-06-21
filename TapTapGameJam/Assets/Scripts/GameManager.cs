@@ -41,6 +41,7 @@ public class GameManager : MonoBehaviour
             .SetUpdate(true); // Time.timeScale에도 적용되도록
         mainCamera.DOOrthoSize(1f, slowDuration)
             .SetEase(Ease.InOutSine)
+            .SetUpdate(true)
             .OnComplete(() => {
                 gameOver.ShowGameOverPanel();
             });
