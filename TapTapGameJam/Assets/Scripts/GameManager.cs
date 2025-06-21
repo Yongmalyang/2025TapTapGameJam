@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject Player; // 여기다 Player 오브젝트 드래그
     public Camera mainCamera;
+    public Spawner spawner;
 
     public float oxygenAmount;
     public float maxOxygen;
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private Vector2 maxBounds;
 
+    public int curStageNum;
 
     private void Awake()
     {
@@ -39,13 +41,13 @@ public class GameManager : MonoBehaviour
         oxygenAmount = maxOxygen;
     }
 
-    public void SpawnObjectInBounds(GameObject prefabToSpawn)
+    public void SpawnObjectInBounds(GameObject prefabToSpawn, Transform parent)
     {
         float x = Random.Range(minBounds.x, maxBounds.x);
         float y = Random.Range(minBounds.y, maxBounds.y);
         Vector3 spawnPos = new Vector3(x, y, 0f);
 
-        GameObject spawned = Instantiate(prefabToSpawn, spawnPos, Quaternion.identity);
+        GameObject spawned = Instantiate(prefabToSpawn, spawnPos, Quaternion.identity, parent);
         Debug.Log(prefabToSpawn.ToString() + " spawned here: "+spawnPos);
 
         // 스케일 애니메이션: 0 → 1로 바운스 등장

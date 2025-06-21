@@ -135,7 +135,7 @@ public class JellyFish : BaseMonster
             if (!GameManager.Instance.IsInsideBounds(gameObject))
             {
                 Debug.Log("나갔다!!!");
-                GameManager.Instance.SpawnObjectInBounds(jellyFishPrefab);
+                GameManager.Instance.SpawnObjectInBounds(GameManager.Instance.spawner.monsterPrefab[1], GameManager.Instance.spawner.monsterHolder.transform);
                 Destroy(gameObject);
                 yield break; // 자기 파괴되면 루프 종료
             }

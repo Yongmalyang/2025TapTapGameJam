@@ -58,6 +58,9 @@ TagManager:
   - name: ArmWeight
     uniqueID: 4138031949
     locked: 0
+  - name: Items
+    uniqueID: 4283231023
+    locked: 0
   - name: Monster
     uniqueID: 2761868383
     locked: 0
