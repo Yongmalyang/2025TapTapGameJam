@@ -99,7 +99,7 @@ public class GameManager : MonoBehaviour
             .SetEase(Ease.InQuad)
             .SetUpdate(true) // Time.timeScale에도 적용되도록
             .OnComplete(() => {
-                stageClear.ShowGameOverPanel();
+                stageClear.ShowStageClearPanel(curStageNum);
             });
         ClearStage();
     }

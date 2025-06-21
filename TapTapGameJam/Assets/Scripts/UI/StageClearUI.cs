@@ -6,18 +6,28 @@ using UnityEngine.UI;
 
 public class StageClearUI : MonoBehaviour
 {
-    Image stageClearUI;
+    [SerializeField]
+    private List<Sprite> clearTextSprite = new List<Sprite>();
+    [SerializeField]
+    private Image clearTextTarget;
+    [SerializeField]
+    private Button NextButton;
+    [SerializeField]
+    private Image missionCompleteImage;
 
-    void Start()
-    {
-        stageClearUI = GetComponent<Image>();
-    }
-
-    public void ShowGameOverPanel()
+    public void ShowStageClearPanel(int stageNum)
     {
         gameObject.SetActive(true);
-        stageClearUI.DOFade(1f, 1f)
-            .SetEase(Ease.InOutSine)
-            .SetUpdate(true); // <- 타임스케일 무시!
+
+        if(stageNum == 3)
+        {
+            missionCompleteImage.gameObject.SetActive(true);
+        }
+        else
+        {
+            clearTextTarget.sprite = clearTextSprite[stageNum];
+            NextButton.gameObject.SetActive(true);
+        }
+
     }
 }
