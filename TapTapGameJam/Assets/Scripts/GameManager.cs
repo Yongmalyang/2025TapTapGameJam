@@ -29,6 +29,9 @@ public class GameManager : MonoBehaviour
     public int curPlayerWeight = 0;
     public List<int> goalWeight = new List<int>() { 20, 30, 50, 100 };
 
+    [SerializeField]
+    private GameObject BGGroup; 
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -83,8 +86,10 @@ public class GameManager : MonoBehaviour
             });
     }
 
+
+
     public void ResetAndGoToNextStage()
     {
-
+        spawner.DestroyAllInScene();
     }
 }
