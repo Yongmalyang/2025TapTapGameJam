@@ -143,3 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c4a9085a4ea0c348a0ba86bee102541, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  oxygenPerCycle: 10
+  interval: 1
+  maxCycles: 5
+  oxygenTextPrefab: {fileID: 8514459517454608557, guid: a83f191d0595a5f479f68b1ec23a3c03, type: 3}

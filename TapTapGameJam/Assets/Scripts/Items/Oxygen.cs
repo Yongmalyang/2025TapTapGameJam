@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Oxygen : MonoBehaviour
@@ -10,22 +11,17 @@ public class Oxygen : MonoBehaviour
     private float interval = 1f;           // 주기 (초)
     [SerializeField]
     private int maxCycles = 5;             // 총 공급 횟수
+    [SerializeField]
+    private GameObject oxygenTextPrefab;
 
     private int usedCycles = 0;           // 이미 사용한 횟수
     private bool playerInside = false;    // 플레이어가 안에 있는가
     private Coroutine oxygenCoroutine;    // 산소 공급 루프
-    /*
-    void OnTriggerEnter2D(Collider2D other)
+    private SpriteRenderer sr;
+    private void Awake()
     {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            Debug.Log("산소 영역 진입");
-            GameManager.Instance.oxygenAmount += 10;
-            GameManager.Instance.Player.GetComponent<Player>().UI.UpdateOxygenUI(10);
-        }
-
+        sr = GetComponent<SpriteRenderer>();
     }
-    */
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -56,11 +52,13 @@ public class Oxygen : MonoBehaviour
         {
             GameManager.Instance.oxygenAmount += oxygenPerCycle;
             player.UI.UpdateOxygenUI(GameManager.Instance.oxygenAmount);
+            SpawnOxygenText(player.transform.position, oxygenPerCycle);
             usedCycles++;
 
             if (usedCycles >= maxCycles)
             {
-                Destroy(gameObject); // 산소 다 주면 사라짐
+                // 산소 다 주면 페이드 아웃
+                StartCoroutine(FadeOutAndDestroy());
                 yield break;
             }
 
@@ -68,5 +66,32 @@ public class Oxygen : MonoBehaviour
         }
 
         oxygenCoroutine = null;
+    }
+
+    private IEnumerator FadeOutAndDestroy()
+    {
+        float fadeDuration = 1.0f;
+        float elapsed = 0f;
+        Color originalColor = sr.color;
+
+        while (elapsed < fadeDuration)
+        {
+            float alpha = Mathf.Lerp(1f, 0f, elapsed / fadeDuration);
+            sr.color = new Color(originalColor.r, originalColor.g, originalColor.b, alpha);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        sr.color = new Color(originalColor.r, originalColor.g, originalColor.b, 0f);
+        Destroy(gameObject);
+    }
+
+    private void SpawnOxygenText(Vector3 position, int amount)
+    {
+        Vector3 randomOffset = new Vector3(Random.Range(-0.5f, 0.5f), Random.Range(0.5f, 1f), 0f);
+        GameObject textObj = Instantiate(oxygenTextPrefab, position + randomOffset, Quaternion.identity, GameManager.Instance.Player.GetComponent<Player>().UI.transform);
+        var textMesh = textObj.GetComponentInChildren<TextMeshPro>();
+        if (textMesh != null)
+            textMesh.text = "+" + amount.ToString();
     }
 }
