@@ -147,6 +147,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a999aa910b7bc1c40ba4a9a952de55d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floatSpeed: 1
-  duration: 0.5
-  floatOffset: {x: 0, y: 1, z: 0}
+  floatDuration: 1
+  moveYAmount: 1
