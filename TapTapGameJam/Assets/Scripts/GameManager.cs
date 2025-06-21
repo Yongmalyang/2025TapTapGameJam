@@ -116,8 +116,11 @@ public class GameManager : MonoBehaviour
         spawner.isSpawn = true;
         resetter.ResetStageMonsters(curStageNum);
         Time.timeScale = 1f;
+        curPlayerWeight = 0;
+
         mainUI.Init();
         resetter.Reset();
+        
     }
 
     // Àç½ÃÀÛ
@@ -127,6 +130,8 @@ public class GameManager : MonoBehaviour
         ResetStage();
 
         Player.transform.DOMove(new Vector3(0f, 9f, 0f), 1f)
+            .SetEase(Ease.InOutSine);
+        mainCamera.DOOrthoSize(7f, slowDuration)
             .SetEase(Ease.InOutSine);
     }
 
@@ -149,7 +154,7 @@ public class GameManager : MonoBehaviour
                 .SetEase(Ease.InOutSine)
                 .OnComplete(() =>
                 {
-                    mainCamera.DOOrthoSize(3f, slowDuration)
+                    mainCamera.DOOrthoSize(7f, slowDuration)
                     .SetEase(Ease.InOutSine);
                     mainCamera.GetComponent<MainCamera>().isFollowingPlayer = true;
                 });
