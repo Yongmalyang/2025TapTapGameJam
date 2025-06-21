@@ -575,7 +575,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 131bbe7bd8f9870418eb10a69b4a2625, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floatForce: 2
+  floatForce: 5
   playerRatio: 0.5
   UI: {fileID: 2175500077581526867}
   ArmWeightPrefab:
