@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7314d534a6d466c4e8863fd0e728919f
+guid: 0aa13d0e2f94f0e4e8746a8c7137a75c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 50
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Anglerfish_0
+      name: AnglerFishNew_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 600
-        height: 600
+        width: 1200
+        height: 1200
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,41 +111,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7def4366881764d489c9f58d01a17da8
-      internalID: 1461059203
+      spriteID: 20e1c607815fee1469ae3bf3f1890ee5
+      internalID: -1011146237
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Anglerfish_1
-      rect:
-        serializedVersion: 2
-        x: 600
-        y: 0
-        width: 600
-        height: 600
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8409b94be57fb164392eb4534e0b36c7
-      internalID: 320387693
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Anglerfish_2
+      name: AnglerFishNew_1
       rect:
         serializedVersion: 2
         x: 1200
         y: 0
-        width: 600
-        height: 600
+        width: 1200
+        height: 1200
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,41 +132,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b3437f4d21ed89842bc3c0564edaebab
-      internalID: -659247589
+      spriteID: 6f23b9ef10cf6f545ac05fb664c195cd
+      internalID: 1551881240
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Anglerfish_3
-      rect:
-        serializedVersion: 2
-        x: 1800
-        y: 0
-        width: 600
-        height: 600
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: acae8f6653193cb46ba40861f417fd76
-      internalID: 384761814
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Anglerfish_4
+      name: AnglerFishNew_2
       rect:
         serializedVersion: 2
         x: 2400
         y: 0
-        width: 600
-        height: 600
+        width: 1200
+        height: 1200
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,41 +153,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b6c839554a3a6a04dac03cd6a5d52c86
-      internalID: 1839727904
+      spriteID: e387f1d94cd238e42ac3872e890ae147
+      internalID: 383477088
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Anglerfish_5
-      rect:
-        serializedVersion: 2
-        x: 3000
-        y: 0
-        width: 600
-        height: 600
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0fcaabea922e90442920142641b002f2
-      internalID: 1124285439
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Anglerfish_6
+      name: AnglerFishNew_3
       rect:
         serializedVersion: 2
         x: 3600
         y: 0
-        width: 600
-        height: 600
+        width: 1200
+        height: 1200
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -237,41 +174,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e6860790d76ff70439f32131695dcf55
-      internalID: -511194022
+      spriteID: 28cea77be9ca69e4183f430dab2ca076
+      internalID: 1384768011
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Anglerfish_7
-      rect:
-        serializedVersion: 2
-        x: 4200
-        y: 0
-        width: 600
-        height: 600
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9f39b490f7ed06b43bce122f751cc35d
-      internalID: 770593914
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Anglerfish_8
+      name: AnglerFishNew_4
       rect:
         serializedVersion: 2
         x: 4800
         y: 0
-        width: 600
-        height: 600
+        width: 1200
+        height: 1200
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -279,20 +195,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fcc4f3dbc205f824ba418c0d930bb114
-      internalID: -800333679
+      spriteID: 016f49c29ed502a46822a21f8952cc50
+      internalID: -72416097
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Anglerfish_9
+      name: AnglerFishNew_5
       rect:
         serializedVersion: 2
-        x: 5400
+        x: 6000
         y: 0
-        width: 600
-        height: 600
+        width: 1200
+        height: 1200
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -300,8 +216,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d390d20839f452c4c9f9a1d2b3325c7f
-      internalID: 222421437
+      spriteID: 9392f98e2d34d244e896bd8d672c0d36
+      internalID: 1504633207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AnglerFishNew_6
+      rect:
+        serializedVersion: 2
+        x: 7200
+        y: 0
+        width: 1200
+        height: 1200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 702c4a78c94a3464397f5a6bd88603de
+      internalID: 94224229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AnglerFishNew_7
+      rect:
+        serializedVersion: 2
+        x: 8400
+        y: 0
+        width: 1200
+        height: 1200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4cc6731779938e6479544ecae6b01d2d
+      internalID: 1200336318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AnglerFishNew_8
+      rect:
+        serializedVersion: 2
+        x: 9600
+        y: 0
+        width: 1200
+        height: 1200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9cd07a4bf7de4d045812fa3e5badd3f3
+      internalID: -1053671122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AnglerFishNew_9
+      rect:
+        serializedVersion: 2
+        x: 10800
+        y: 0
+        width: 1200
+        height: 1200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09d925a1eddae0e4292fddeaca4fefd1
+      internalID: 1958823416
       vertices: []
       indices: 
       edges: []
@@ -317,16 +317,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Anglerfish_0: 1461059203
-      Anglerfish_1: 320387693
-      Anglerfish_2: -659247589
-      Anglerfish_3: 384761814
-      Anglerfish_4: 1839727904
-      Anglerfish_5: 1124285439
-      Anglerfish_6: -511194022
-      Anglerfish_7: 770593914
-      Anglerfish_8: -800333679
-      Anglerfish_9: 222421437
+      AnglerFishNew_0: -1011146237
+      AnglerFishNew_1: 1551881240
+      AnglerFishNew_2: 383477088
+      AnglerFishNew_3: 1384768011
+      AnglerFishNew_4: -72416097
+      AnglerFishNew_5: 1504633207
+      AnglerFishNew_6: 94224229
+      AnglerFishNew_7: 1200336318
+      AnglerFishNew_8: -1053671122
+      AnglerFishNew_9: 1958823416
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

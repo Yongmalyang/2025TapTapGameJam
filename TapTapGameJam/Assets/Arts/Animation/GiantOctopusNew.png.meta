@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7314d534a6d466c4e8863fd0e728919f
+guid: 3c2b062dbb9375240818f236d9529798
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 50
+  spritePixelsToUnits: 20
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Anglerfish_0
+      name: GiantOctopusNew_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 600
-        height: 600
+        width: 1200
+        height: 1200
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,41 +111,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7def4366881764d489c9f58d01a17da8
-      internalID: 1461059203
+      spriteID: 123822cac28d75e4f8bb5ebf143719d6
+      internalID: -278998949
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Anglerfish_1
-      rect:
-        serializedVersion: 2
-        x: 600
-        y: 0
-        width: 600
-        height: 600
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8409b94be57fb164392eb4534e0b36c7
-      internalID: 320387693
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Anglerfish_2
+      name: GiantOctopusNew_1
       rect:
         serializedVersion: 2
         x: 1200
         y: 0
-        width: 600
-        height: 600
+        width: 1200
+        height: 1200
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,41 +132,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b3437f4d21ed89842bc3c0564edaebab
-      internalID: -659247589
+      spriteID: 4c45f163122a6a44c9fe9c39ca5fb783
+      internalID: 526110789
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Anglerfish_3
-      rect:
-        serializedVersion: 2
-        x: 1800
-        y: 0
-        width: 600
-        height: 600
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: acae8f6653193cb46ba40861f417fd76
-      internalID: 384761814
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Anglerfish_4
+      name: GiantOctopusNew_2
       rect:
         serializedVersion: 2
         x: 2400
         y: 0
-        width: 600
-        height: 600
+        width: 1200
+        height: 1200
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,41 +153,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b6c839554a3a6a04dac03cd6a5d52c86
-      internalID: 1839727904
+      spriteID: 00042e2f4a2505446ba89fcc0d3d3e62
+      internalID: -1991865430
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Anglerfish_5
-      rect:
-        serializedVersion: 2
-        x: 3000
-        y: 0
-        width: 600
-        height: 600
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0fcaabea922e90442920142641b002f2
-      internalID: 1124285439
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Anglerfish_6
+      name: GiantOctopusNew_3
       rect:
         serializedVersion: 2
         x: 3600
         y: 0
-        width: 600
-        height: 600
+        width: 1200
+        height: 1200
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -237,41 +174,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e6860790d76ff70439f32131695dcf55
-      internalID: -511194022
+      spriteID: f9f4697eb85a7d049b8b4f830c80c8d9
+      internalID: 1116804557
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Anglerfish_7
-      rect:
-        serializedVersion: 2
-        x: 4200
-        y: 0
-        width: 600
-        height: 600
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9f39b490f7ed06b43bce122f751cc35d
-      internalID: 770593914
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Anglerfish_8
+      name: GiantOctopusNew_4
       rect:
         serializedVersion: 2
         x: 4800
         y: 0
-        width: 600
-        height: 600
+        width: 1200
+        height: 1200
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -279,20 +195,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fcc4f3dbc205f824ba418c0d930bb114
-      internalID: -800333679
+      spriteID: 85f50fad79b144a41a70bcc76151f74a
+      internalID: 96739596
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Anglerfish_9
+      name: GiantOctopusNew_5
       rect:
         serializedVersion: 2
-        x: 5400
+        x: 6000
         y: 0
-        width: 600
-        height: 600
+        width: 1200
+        height: 1200
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -300,8 +216,113 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d390d20839f452c4c9f9a1d2b3325c7f
-      internalID: 222421437
+      spriteID: 19a50f33984b26b45b6ca5db6dfa2f4f
+      internalID: 2118089835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GiantOctopusNew_6
+      rect:
+        serializedVersion: 2
+        x: 7200
+        y: 0
+        width: 1200
+        height: 1200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 348b20514a2d92c4d866d6f482f7ce03
+      internalID: -1785676470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GiantOctopusNew_7
+      rect:
+        serializedVersion: 2
+        x: 8400
+        y: 0
+        width: 1200
+        height: 1200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3e65f90a136de24e952a7d701443db5
+      internalID: -599331677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GiantOctopusNew_8
+      rect:
+        serializedVersion: 2
+        x: 9600
+        y: 0
+        width: 1200
+        height: 1200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9057e7f48aa745f448629ae1a53b7405
+      internalID: -1363661757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GiantOctopusNew_9
+      rect:
+        serializedVersion: 2
+        x: 10800
+        y: 0
+        width: 1200
+        height: 1200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74516e0c768fee348a88c57ba06bddee
+      internalID: 1895067294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GiantOctopusNew_10
+      rect:
+        serializedVersion: 2
+        x: 12000
+        y: 0
+        width: 1200
+        height: 1200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aff26167852819044babbe114c217a29
+      internalID: -482153574
       vertices: []
       indices: 
       edges: []
@@ -317,16 +338,17 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Anglerfish_0: 1461059203
-      Anglerfish_1: 320387693
-      Anglerfish_2: -659247589
-      Anglerfish_3: 384761814
-      Anglerfish_4: 1839727904
-      Anglerfish_5: 1124285439
-      Anglerfish_6: -511194022
-      Anglerfish_7: 770593914
-      Anglerfish_8: -800333679
-      Anglerfish_9: 222421437
+      GiantOctopusNew_0: -278998949
+      GiantOctopusNew_1: 526110789
+      GiantOctopusNew_10: -482153574
+      GiantOctopusNew_2: -1991865430
+      GiantOctopusNew_3: 1116804557
+      GiantOctopusNew_4: 96739596
+      GiantOctopusNew_5: 2118089835
+      GiantOctopusNew_6: -1785676470
+      GiantOctopusNew_7: -599331677
+      GiantOctopusNew_8: -1363661757
+      GiantOctopusNew_9: 1895067294
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

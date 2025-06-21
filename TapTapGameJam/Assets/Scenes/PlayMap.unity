@@ -3880,8 +3880,8 @@ MonoBehaviour:
   stageMonsters:
   - {fileID: 8853409867397389843, guid: c14d455f575d0414eb2e05542a096051, type: 3}
   - {fileID: 602457139853084487, guid: 5e9915e8705d22143bfa6ba9cf1db5f9, type: 3}
-  - {fileID: 8853409867397389843, guid: c14d455f575d0414eb2e05542a096051, type: 3}
-  - {fileID: 602457139853084487, guid: 5e9915e8705d22143bfa6ba9cf1db5f9, type: 3}
+  - {fileID: 8169847755987963089, guid: 39b3064fd7ec8d1499a2d68afc6ad35d, type: 3}
+  - {fileID: 8755580538061023354, guid: 42f43764c9ffc584493ec7de00d5e576, type: 3}
   monsterGroupHolder: {fileID: 1045587119}
 --- !u!4 &1958436853
 Transform:
