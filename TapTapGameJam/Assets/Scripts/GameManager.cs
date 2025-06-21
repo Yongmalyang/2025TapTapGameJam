@@ -23,14 +23,12 @@ public class GameManager : MonoBehaviour
 
     public float slowDuration = 1.5f;
 
-    [SerializeField]
-    private Vector2 minBounds;
-    [SerializeField]
-    private Vector2 maxBounds;
+    public Vector2 minBounds;
+    public Vector2 maxBounds;
 
     public int curStageNum;
     public int curPlayerWeight = 0;
-    public List<int> goalWeight = new List<int>() { 5, 30, 50, 100 };
+    public List<int> goalWeight = new List<int>() { 20, 30, 50, 100 };
 
     [SerializeField]
     private GameObject BGGroup;
@@ -129,7 +127,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("¿ÁΩ√¿€");
         ResetStage();
 
-        Player.transform.DOMove(new Vector3(0f, 9f, 0f), 1f)
+        Player.transform.DOMove(new Vector3(0f, 7f, 0f), 1f)
             .SetEase(Ease.InOutSine);
         mainCamera.DOOrthoSize(7f, slowDuration)
             .SetEase(Ease.InOutSine);
@@ -144,8 +142,8 @@ public class GameManager : MonoBehaviour
         ResetStage();
 
         mainCamera.GetComponent<MainCamera>().isFollowingPlayer = false;
-        mainCamera.gameObject.transform.position = new Vector3(0f, 9f, -10f);
-        Player.transform.position = new Vector3(0f, 9f, 0f);
+        mainCamera.gameObject.transform.position = new Vector3(0f, 7f, -10f);
+        Player.transform.position = new Vector3(0f, 7f, 0f);
 
         mainCamera.DOOrthoSize(10f, slowDuration)
             .SetEase(Ease.InOutSine)

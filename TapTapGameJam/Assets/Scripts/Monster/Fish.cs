@@ -9,10 +9,13 @@ public class Fish : BaseMonster
     private float lastAttackTime = -Mathf.Infinity;
     public bool canDealDamage = true;
 
+    private FishGroup group;
+
     protected override void Start()
     {
         base.Start();
         oxygenDamage = fishDamage;
+        group = GetComponentInParent<FishGroup>();
     }
 
     private void Update()
@@ -31,6 +34,7 @@ public class Fish : BaseMonster
             AttackPlayer(fishDamage);
             canDealDamage = false;
             lastAttackTime = Time.time;
+            group.PauseAfterCollision();
         }
     }
 }
