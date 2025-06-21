@@ -3,7 +3,7 @@ using UnityEngine;
 public class Fish : BaseMonster
 {
     public float moveSpeed = 2f;
-    private bool movingRight = false; // 기본 방향은 왼쪽
+    private bool movingRight = true; // 기본 방향은 오른쪽
 
     protected override void Start()
     {
