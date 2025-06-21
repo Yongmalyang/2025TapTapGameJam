@@ -11,7 +11,7 @@ public class AnglerFish : BaseMonster
     public Collider2D mouthCollider;
 
     public float suctionRadius = 20f;
-    public float suctionForce = 10f;
+    public float suctionForce = 5f;
     public float suctionDuration = 5f;
     public float attackCooldown = 10f;
 

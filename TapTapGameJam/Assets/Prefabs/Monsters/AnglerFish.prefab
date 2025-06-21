@@ -173,7 +173,7 @@ MonoBehaviour:
   mouthPoint: {fileID: 2447604607716137341}
   mouthCollider: {fileID: 7892836651262548219}
   suctionRadius: 20
-  suctionForce: 10
+  suctionForce: 5
   suctionDuration: 5
   attackCooldown: 10
 --- !u!1 &5920543237106137452
