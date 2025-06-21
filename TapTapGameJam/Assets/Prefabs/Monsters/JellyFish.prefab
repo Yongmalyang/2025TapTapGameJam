@@ -231,9 +231,10 @@ MonoBehaviour:
   maxHP: 100
   damageEffectPrefab: {fileID: 8514459517454608557, guid: 0b380defa83d32049b17cdb770b72b34, type: 3}
   oxygenDamage: 10
-  idleMoveRadius: 2
-  idleMoveTime: 2
+  moveDistance: 2
+  moveDuration: 1.5
+  waitTime: 0.5
   detectRange: 5
-  rushDelay: 0.5
-  rushSpeed: 6
-  rushCooldown: 3
+  aimDuration: 1
+  shakeDuration: 0.5
+  rushSpeed: 1
