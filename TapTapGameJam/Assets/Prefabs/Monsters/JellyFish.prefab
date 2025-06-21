@@ -74,7 +74,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1533098913
-  m_SortingLayer: 1
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -447256333, guid: 72caf6e900dff23408ec8796056a8757, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -155,6 +155,8 @@ MonoBehaviour:
   shakeDuration: 0.5
   rushSpeed: 1
   attackCooldown: 3
+  canDealDamage: 1
+  jellyFishPrefab: {fileID: 7036298453399333985}
 --- !u!95 &5190021935836279751
 Animator:
   serializedVersion: 5

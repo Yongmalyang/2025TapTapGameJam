@@ -17,6 +17,12 @@ public class GameManager : MonoBehaviour
 
     public float slowDuration = 1.5f;
 
+    [SerializeField]
+    private Vector2 minBounds;
+    [SerializeField]
+    private Vector2 maxBounds;
+
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -32,6 +38,30 @@ public class GameManager : MonoBehaviour
     {
         oxygenAmount = maxOxygen;
     }
+
+    public void SpawnObjectInBounds(GameObject prefabToSpawn)
+    {
+        float x = Random.Range(minBounds.x, maxBounds.x);
+        float y = Random.Range(minBounds.y, maxBounds.y);
+        Vector3 spawnPos = new Vector3(x, y, 0f);
+
+        GameObject spawned = Instantiate(prefabToSpawn, spawnPos, Quaternion.identity);
+        Debug.Log(prefabToSpawn.ToString() + " spawned here: "+spawnPos);
+
+        // 스케일 애니메이션: 0 → 1로 바운스 등장
+        spawned.transform.localScale = Vector3.zero;
+        spawned.transform.DOScale(Vector3.one, 0.5f)
+            .SetEase(Ease.OutBounce); // <- 튕기듯이 나타남
+    }
+
+    public bool IsInsideBounds(GameObject obj)
+    {
+        Vector3 pos = obj.transform.position;
+
+        return pos.x >= minBounds.x && pos.x <= maxBounds.x &&
+               pos.y >= minBounds.y && pos.y <= maxBounds.y;
+    }
+
 
     public void GameOver()
     {

@@ -29,6 +29,8 @@ public class JellyFish : BaseMonster
     private float jellyfishDamage_dash = 20f;
     public bool canDealDamage = true;
 
+    public GameObject jellyFishPrefab; // 자기 자신 프리팹 (Inspector에서 연결)
+
     protected override void Start()
     {
         base.Start();
@@ -36,6 +38,7 @@ public class JellyFish : BaseMonster
         player = GameManager.Instance.Player.transform;
         animator = GetComponent<Animator>();
         StartCoroutine(MoveRoutine());
+        StartCoroutine(CheckBoundsRoutine());
     }
 
     private IEnumerator MoveRoutine()
@@ -122,6 +125,24 @@ public class JellyFish : BaseMonster
         isAttacking = false;
         StartCoroutine(MoveRoutine());
     }
+
+    private IEnumerator CheckBoundsRoutine()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(5f); // 5초마다 검사
+
+            if (!GameManager.Instance.IsInsideBounds(gameObject))
+            {
+                Debug.Log("나갔다!!!");
+                GameManager.Instance.SpawnObjectInBounds(jellyFishPrefab);
+                Destroy(gameObject);
+                yield break; // 자기 파괴되면 루프 종료
+            }
+            Debug.Log("아직 안나감");
+        }
+    }
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
