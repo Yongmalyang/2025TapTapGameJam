@@ -119,7 +119,6 @@ public class GameManager : MonoBehaviour
 
         mainUI.Init();
         resetter.Reset();
-        
     }
 
     // 재시작
@@ -140,24 +139,33 @@ public class GameManager : MonoBehaviour
         Debug.Log("넘어가기");
 
         curStageNum++;
-        ResetStage();
 
         mainCamera.GetComponent<MainCamera>().isFollowingPlayer = false;
         mainCamera.gameObject.transform.position = new Vector3(0f, playerAndCameraInitPos, -10f);
         Player.transform.position = new Vector3(0f, playerAndCameraInitPos, 0f);
+        mainUI.gameObject.SetActive(false);
 
-        mainCamera.DOOrthoSize(10f, slowDuration)
-            .SetEase(Ease.InOutSine)
-            .OnComplete(() => {
-                BGGroup.transform.DOMoveY(BGPos[curStageNum], 2f)
-                .SetEase(Ease.InOutSine)
-                .OnComplete(() =>
-                {
-                    mainCamera.DOOrthoSize(camInitZoom, slowDuration)
-                    .SetEase(Ease.InOutSine);
-                    mainCamera.GetComponent<MainCamera>().isFollowingPlayer = true;
-                });
-            });
+        Sequence seq = DOTween.Sequence();
+
+        seq.Append(mainCamera.DOOrthoSize(10f, slowDuration)
+            .SetEase(Ease.InOutSine))
+            .SetUpdate(true);
+
+        seq.Append(BGGroup.transform.DOMoveY(BGPos[curStageNum], 2f)
+            .SetEase(Ease.InOutSine))
+            .SetUpdate(true);
+
+        seq.Append(mainCamera.DOOrthoSize(camInitZoom, slowDuration)
+            .SetEase(Ease.InOutSine))
+            .SetUpdate(true);
+
+        seq.OnComplete(() =>
+        {
+            mainCamera.GetComponent<MainCamera>().isFollowingPlayer = true;
+            mainUI.gameObject.SetActive(true);
+            ResetStage();
+        });
     }
+
 
 }
