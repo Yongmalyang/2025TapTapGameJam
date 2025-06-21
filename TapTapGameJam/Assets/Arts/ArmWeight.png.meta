@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 72caf6e900dff23408ec8796056a8757
+guid: 02a49496d69b80b4ba1f2eaf0866b740
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 200
+  spritePixelsToUnits: 300
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Jellyfish_0
+      name: ArmWeight_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 600
-        height: 600
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,20 +111,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 047546545d9d2244a81f6601caf99c31
-      internalID: -447256333
+      spriteID: 6b61f55ec73c65e428cb96cb0f9d29f3
+      internalID: 1150732808
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jellyfish_1
+      name: ArmWeight_1
       rect:
         serializedVersion: 2
-        x: 600
+        x: 256
         y: 0
-        width: 600
-        height: 600
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -132,20 +132,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a37f131d998ad5c4fa8f55526de14a38
-      internalID: -1114532202
+      spriteID: 067be213a769f744cad2588f1052c1f8
+      internalID: 2070731879
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jellyfish_2
+      name: ArmWeight_2
       rect:
         serializedVersion: 2
-        x: 1200
+        x: 512
         y: 0
-        width: 600
-        height: 600
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,20 +153,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c45dfe4a07ac11d4d89b7aba99645d86
-      internalID: 1771903076
+      spriteID: d46c819f98c96964886f2a6945b76a2d
+      internalID: 1613905564
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Jellyfish_3
+      name: ArmWeight_3
       rect:
         serializedVersion: 2
-        x: 1800
+        x: 768
         y: 0
-        width: 600
-        height: 600
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,50 +174,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 03b2760c68efc92468c7101850652eb9
-      internalID: -340589923
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Jellyfish_4
-      rect:
-        serializedVersion: 2
-        x: 2400
-        y: 0
-        width: 600
-        height: 600
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 765005a60a02f6b4c9c8efa2826b35b7
-      internalID: 1516256975
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Jellyfish_5
-      rect:
-        serializedVersion: 2
-        x: 3000
-        y: 0
-        width: 600
-        height: 600
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 05dd5098000ec8e4381c58e4a2f99544
-      internalID: -384985187
+      spriteID: 6c950c200b8d85548adbb06190dbc2fe
+      internalID: -2021709377
       vertices: []
       indices: 
       edges: []
@@ -233,12 +191,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Jellyfish_0: -447256333
-      Jellyfish_1: -1114532202
-      Jellyfish_2: 1771903076
-      Jellyfish_3: -340589923
-      Jellyfish_4: 1516256975
-      Jellyfish_5: -384985187
+      ArmWeight_0: 1150732808
+      ArmWeight_1: 2070731879
+      ArmWeight_2: 1613905564
+      ArmWeight_3: -2021709377
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
