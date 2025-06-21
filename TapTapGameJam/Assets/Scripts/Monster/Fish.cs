@@ -7,10 +7,12 @@ public class Fish : BaseMonster
 
     private Vector3 startPos;
     private bool movingRight = true;
+    private float fishDamage = 10f;
 
     protected override void Start()
     {
         base.Start();
+        oxygenDamage = fishDamage;
         startPos = transform.position;
     }
 

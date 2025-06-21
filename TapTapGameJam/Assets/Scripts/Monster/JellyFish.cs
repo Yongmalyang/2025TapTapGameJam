@@ -24,9 +24,13 @@ public class JellyFish : BaseMonster
 
     private Animator animator;
 
+    private float jellyfishDamage = 10f;
+    private float jellyfishDamage_dash = 20f;
+
     protected override void Start()
     {
         base.Start();
+        oxygenDamage = jellyfishDamage;
         player = GameManager.Instance.Player.transform;
         animator = GetComponent<Animator>();
         StartCoroutine(MoveRoutine());
@@ -96,7 +100,15 @@ public class JellyFish : BaseMonster
         float rushDistance = 10f;
         Vector3 finalTarget = transform.position + (Vector3)(rushDir * rushDistance);
 
-        transform.DOMove(finalTarget, 1f / rushSpeed).SetEase(Ease.OutQuad);
+        // 돌진 시작 전에 설정
+        canDealDamage = true;
+        oxygenDamage = jellyfishDamage_dash;
+        transform.DOMove(finalTarget, 1f / rushSpeed)
+            .SetEase(Ease.OutQuad)
+            .OnComplete(() => {
+                canDealDamage = false;
+                oxygenDamage = jellyfishDamage;
+            });
 
         // 돌진 후 Stop 애니메이션 1초 유지
         yield return new WaitForSeconds(1f);
