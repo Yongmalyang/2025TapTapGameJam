@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 3625043607559282579, guid: 19fb86013d8c24d6cb8410c0aadf30fa, type: 3}
-  m_Color: {r: 1, g: 0, b: 0.740572, a: 1}
+  m_Color: {r: 0.5657016, g: 0.5924529, b: 0.50414383, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -100,9 +100,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 100
   damageEffectPrefab: {fileID: 8514459517454608557, guid: 0b380defa83d32049b17cdb770b72b34, type: 3}
+  oxygenDamage: 10
   moveSpeed: 2
   moveRange: 3
-  oxygenDamage: 10
 --- !u!61 &3027458545959026459
 BoxCollider2D:
   m_ObjectHideFlags: 0
