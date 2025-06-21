@@ -13,6 +13,8 @@ public class StageResetter : MonoBehaviour
     private void Start()
     {
         curStage = GameManager.Instance.curStageNum;
+        ResetStageMonsters(GameManager.Instance.curStageNum);
+
     }
 
     public void Reset()

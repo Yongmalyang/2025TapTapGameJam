@@ -112,7 +112,6 @@ public class GameManager : MonoBehaviour
     public void ResetStage()
     {
         spawner.isSpawn = true;
-        resetter.ResetStageMonsters(curStageNum);
         Time.timeScale = 1f;
         curPlayerWeight = 0;
 
@@ -139,7 +138,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("넘어가기");
 
         curStageNum++;
-        ResetStage();
+        
 
         mainCamera.GetComponent<MainCamera>().isFollowingPlayer = false;
         mainCamera.gameObject.transform.position = new Vector3(0f, 7f, -10f);
@@ -153,8 +152,12 @@ public class GameManager : MonoBehaviour
                 .OnComplete(() =>
                 {
                     mainCamera.DOOrthoSize(7f, slowDuration)
-                    .SetEase(Ease.InOutSine);
-                    mainCamera.GetComponent<MainCamera>().isFollowingPlayer = true;
+                    .SetEase(Ease.InOutSine)
+                    .OnComplete(() =>
+                    {
+                        mainCamera.GetComponent<MainCamera>().isFollowingPlayer = true;
+                        ResetStage();
+                    });
                 });
             });
     }
