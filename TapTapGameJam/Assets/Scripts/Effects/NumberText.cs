@@ -19,7 +19,7 @@ public class NumberText : MonoBehaviour
         Color startColor = textMesh.color;
         textMesh.color = new Color(startColor.r, startColor.g, startColor.b, 1f);
         transform.localScale = Vector3.zero;
-
+        
         // 스케일 애니메이션: 커졌다가 작아짐
         transform.DOScale(originalScale * 1.3f, 0.15f)
             .SetEase(Ease.OutBack)

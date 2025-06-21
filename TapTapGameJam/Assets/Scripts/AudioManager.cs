@@ -1,12 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour
 {
     [SerializeField] private AudioClip horrorBGM;
     [SerializeField] private AudioSource BGM;
     [SerializeField] private List<AudioSource> UISoundSource;
+
+    void Start()
+    {
+        Button[] allButtons = FindObjectsOfType<Button>();
+
+        foreach (Button btn in allButtons)
+        {
+            btn.onClick.AddListener(() => OnAnyButtonClicked(btn));
+        }
+    }
+    
+
+    private void OnAnyButtonClicked(Button clickedButton)
+    {
+        PressButton();
+    }
 
     public void DiveIntoDeepWaters()
     {
@@ -47,4 +64,6 @@ public class AudioManager : MonoBehaviour
         UISoundSource[5].Play();
 
     }
+
+
 }

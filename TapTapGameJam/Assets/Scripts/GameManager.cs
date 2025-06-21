@@ -91,6 +91,7 @@ public class GameManager : MonoBehaviour
             .OnComplete(() => {
                 gameOver.ShowGameOverPanel();
             });
+        audioManager.Fail();
         ClearStage();
     }
 
@@ -102,6 +103,7 @@ public class GameManager : MonoBehaviour
             .OnComplete(() => {
                 stageClear.ShowStageClearPanel(curStageNum);
             });
+        audioManager.Clear();
         ClearStage();
     }
 

@@ -107,7 +107,7 @@ public class Player : MonoBehaviour
             Debug.Log("clear stage");
             GameManager.Instance.StageClear();
         }
-            
-            
+
+        GameManager.Instance.audioManager.GetWeight(); 
     }
 }

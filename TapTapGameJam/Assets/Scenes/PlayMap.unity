@@ -1664,6 +1664,7 @@ MonoBehaviour:
   spawner: {fileID: 303109098}
   mainUI: {fileID: 1824971217}
   resetter: {fileID: 1958436852}
+  audioManager: {fileID: 955879437}
   oxygenAmount: 100
   maxOxygen: 100
   oxygenDropRate: 2
