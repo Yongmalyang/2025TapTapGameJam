@@ -34,7 +34,7 @@ public abstract class BaseMonster : MonoBehaviour
         // UI 반영
         GameManager.Instance.Player.GetComponent<Player>().UI.UpdateOxygenUI(GameManager.Instance.oxygenAmount);
         // 0보다 작아지면 게임오버
-        if (GameManager.Instance.oxygenAmount <= 0) { GameManager.Instance.GameOver(); return; }
+        if (GameManager.Instance.oxygenAmount <= 0) { GameManager.Instance.GameOver(); }
         ShowDamageEffect(GameManager.Instance.Player.transform.position, amount);
     }
 

@@ -21,13 +21,13 @@ public class JellyFish : BaseMonster
     private Transform player;
     private bool isAttacking = false;
     private bool isMoving = false;
+    private bool isRushing = false;
 
     private Animator animator;
 
     private float jellyfishDamage = 10f;
     private float jellyfishDamage_dash = 20f;
     public bool canDealDamage = true;
-
 
     protected override void Start()
     {
@@ -45,7 +45,6 @@ public class JellyFish : BaseMonster
             if (isMoving || isAttacking) yield return null;
             isMoving = true;
 
-            // 애니메이션 상태: 이동 중
             animator.SetBool("IsMoving", true);
             animator.SetBool("IsStopped", false);
 
@@ -70,13 +69,11 @@ public class JellyFish : BaseMonster
         }
     }
 
-
     private IEnumerator AttackRoutine()
     {
         isAttacking = true;
         lastAttackTime = Time.time;
 
-        // 애니메이션 상태: 멈춤 (조준 시작)
         animator.SetBool("IsMoving", false);
         animator.SetBool("IsStopped", true);
 
@@ -90,11 +87,13 @@ public class JellyFish : BaseMonster
             yield return null;
         }
 
-        // 떨기 연출 (Stop 애니메이션 유지 중)
+        // 쿨타임 초기화 + 떨 때는 데미지 X
+        canDealDamage = false;
+        lastAttackTime = Time.time;
+
         yield return transform.DOShakePosition(shakeDuration, 0.1f, 20, 90, false, false)
             .SetEase(Ease.Linear).WaitForCompletion();
 
-        // Attack 트리거 발동 → Attack → Stop(자동 전환)
         animator.SetTrigger("Attack");
 
         Vector3 rushTarget = player.position;
@@ -102,31 +101,53 @@ public class JellyFish : BaseMonster
         float rushDistance = 10f;
         Vector3 finalTarget = transform.position + (Vector3)(rushDir * rushDistance);
 
-        // 돌진 시작 전에 설정
+        // 돌진 상태 진입
+        isRushing = true;
         canDealDamage = true;
         oxygenDamage = jellyfishDamage_dash;
+
         transform.DOMove(finalTarget, 1f / rushSpeed)
             .SetEase(Ease.OutQuad)
-            .OnComplete(() => {
+            .OnComplete(() =>
+            {
+                isRushing = false;
                 canDealDamage = false;
                 oxygenDamage = jellyfishDamage;
             });
 
-        // 돌진 후 Stop 애니메이션 1초 유지
         yield return new WaitForSeconds(1f);
         animator.SetBool("IsStopped", true);
         animator.SetBool("IsMoving", false);
 
-        // 다시 유영
         isAttacking = false;
         StartCoroutine(MoveRoutine());
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (canDealDamage && collision.gameObject.CompareTag("Player"))
+        if (!collision.gameObject.CompareTag("Player")) return;
+
+        if (canDealDamage)
         {
             AttackPlayer(oxygenDamage);
+
+            if (isRushing)
+            {
+                // 돌진 중 데미지 주면 쿨타임 갱신
+                lastAttackTime = Time.time;
+            }
+
+            canDealDamage = false;
+        }
+        else
+        {
+            // 기본 상태 충돌일 때 쿨타임이 지났는지 검사
+            if (!isAttacking && Time.time >= lastAttackTime + attackCooldown)
+            {
+                AttackPlayer(jellyfishDamage);
+                lastAttackTime = Time.time;
+                canDealDamage = false;
+            }
         }
     }
 }
