@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3036617724803462900
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1560564141542671784}
+  m_Layer: 0
+  m_Name: AttackPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1560564141542671784
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3036617724803462900}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: -0.13052624, w: 0.9914449}
+  m_LocalPosition: {x: 5.98, y: -6.72, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7591470861429326466}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -15}
 --- !u!1 &8169847755987963089
 GameObject:
   m_ObjectHideFlags: 0
@@ -30,7 +61,40 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7221282642927355286}
+  - {fileID: 1612023246793278343}
+  - {fileID: 1560564141542671784}
   m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8945521337001893673
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1612023246793278343}
+  m_Layer: 0
+  m_Name: HidePos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1612023246793278343
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8945521337001893673}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 12.64, y: -11.95, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7591470861429326466}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1970055142274330774
 PrefabInstance:
@@ -44,6 +108,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: AnglerFish
       objectReference: {fileID: 0}
+    - target: {fileID: 6777232145240179305, guid: 525e1a855f4b1fd4f9dd84cbbbd1a0de, type: 3}
+      propertyPath: hidePosition
+      value: 
+      objectReference: {fileID: 1612023246793278343}
+    - target: {fileID: 6777232145240179305, guid: 525e1a855f4b1fd4f9dd84cbbbd1a0de, type: 3}
+      propertyPath: attackPosition
+      value: 
+      objectReference: {fileID: 1560564141542671784}
+    - target: {fileID: 6777232145240179305, guid: 525e1a855f4b1fd4f9dd84cbbbd1a0de, type: 3}
+      propertyPath: damageEffectPrefab
+      value: 
+      objectReference: {fileID: 8514459517454608557, guid: 0b380defa83d32049b17cdb770b72b34, type: 3}
     - target: {fileID: 9178385497352860928, guid: 525e1a855f4b1fd4f9dd84cbbbd1a0de, type: 3}
       propertyPath: m_LocalPosition.x
       value: 12.64
