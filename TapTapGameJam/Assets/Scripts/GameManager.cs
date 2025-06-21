@@ -10,8 +10,6 @@ public class GameManager : MonoBehaviour
     public float maxOxygen;
     public float oxygenDropRate;
 
-
-
     private void Awake()
     {
         if (Instance != null && Instance != this)
