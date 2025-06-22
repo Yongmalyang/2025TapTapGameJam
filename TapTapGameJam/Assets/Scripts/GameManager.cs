@@ -64,7 +64,10 @@ public class GameManager : MonoBehaviour
             });
         });
         */
-        tutorialManager.ShowTutorialImage(0);
+        DOVirtual.DelayedCall(2f, () =>
+        {
+            tutorialManager.ShowTutorialImage(0);
+        }).SetUpdate(true); // timeScale이 0이어도 실행됨
     }
 
     public void SpawnObjectInBounds(GameObject prefabToSpawn, Transform parent)
