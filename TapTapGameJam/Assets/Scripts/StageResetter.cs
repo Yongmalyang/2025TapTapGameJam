@@ -30,11 +30,13 @@ public class StageResetter : MonoBehaviour
 
         if(cur >= max * 0.6)
         {
-            middleWalls[1].SetActive(false);
+            middleWalls[1].GetComponent<WallLine>().DestroyWall();
+            //middleWalls[1].SetActive(false);
         }
         if(cur >= max * 0.3)
         {
-            middleWalls[0].SetActive(false);
+            middleWalls[0].GetComponent<WallLine>().DestroyWall();
+            //middleWalls[0].SetActive(false);
         }
     }
 
