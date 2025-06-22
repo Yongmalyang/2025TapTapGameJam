@@ -113,6 +113,7 @@ public class GameManager : MonoBehaviour
     {
         spawner.DestroyAllInScene();
         resetter.ClearStageMonsters(curStageNum);
+        Player.GetComponent<Player>().SaveToLegacy();
     }
 
     public void ResetStage()
