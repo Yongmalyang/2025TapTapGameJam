@@ -15,6 +15,8 @@ public class EndingManager : MonoBehaviour
     public float moveDuration = 1.5f;     // 위→아래 한 방향 시간
     public float startDelay = 0f;         // 시작 전 대기 시간
 
+    public GameObject Madeby;
+
     void Awake()
     {
         transform.localScale = Vector3.zero;
@@ -51,6 +53,7 @@ public class EndingManager : MonoBehaviour
             {
                 sr.sortingLayerName = "Overlay"; // 원하는 레이어명
             }
+            Madeby.SetActive(true);
         });
 
         // 2. 위아래 요요 애니메이션
