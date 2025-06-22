@@ -21,8 +21,6 @@ public class WallLine : MonoBehaviour
     {
         if (!collision.gameObject.CompareTag("Player")) return;
 
-        tooLightText.text = "TOO LIGHT!";
-
         // 기존 트윈 중지
         blinkTween?.Kill();
 
@@ -38,8 +36,6 @@ public class WallLine : MonoBehaviour
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (!collision.gameObject.CompareTag("Player")) return;
-
-        tooLightText.text = "TOO LIGHT!";
 
         blinkTween?.Kill();
 
@@ -78,6 +74,7 @@ public class WallLine : MonoBehaviour
             canvasGroup.interactable = false;
             canvasGroup.blocksRaycasts = false;
             gameObject.SetActive(false);
+            tooLightText.text = "TOO LIGHT!";
         });
     }
 
