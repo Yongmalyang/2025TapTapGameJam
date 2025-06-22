@@ -102,15 +102,21 @@ public class GameManager : MonoBehaviour
     {
         DOTween.To(() => Time.timeScale, x => Time.timeScale = x, 0f, slowDuration)
             .SetEase(Ease.InQuad)
-            .SetUpdate(true) // Time.timeScale에도 적용되도록
+            .SetUpdate(true)
             .OnComplete(() => {
                 stageClear.ShowStageClearPanel(curStageNum);
+
+                if (curStageNum == 3)
+                {
+                    // 2초 기다렸다가 엔딩 시퀀스 시작
+                    DOVirtual.DelayedCall(2f, () => {
+                        EndingSequence();
+                    }).SetUpdate(true); // <- Time.timeScale = 0에서도 작동하게
+                }
             });
+
         audioManager.Clear();
         ClearStage();
-
-        // 마지막 씬이라면...
-        if (curStageNum == 3) EndingSequence();
     }
 
     // 지금까지 했던거 다 지우기
@@ -119,7 +125,6 @@ public class GameManager : MonoBehaviour
         spawner.DestroyAllInScene();
         resetter.ClearStageMonsters(curStageNum);
         curPlayerWeight = 0;
-
     }
 
     public void ResetStage()
@@ -193,8 +198,8 @@ public class GameManager : MonoBehaviour
 
         Sequence suckSeq = DOTween.Sequence();
 
-        suckSeq.Append(Player.transform.DOMove(myMoonbase.position, 1.5f).SetEase(Ease.InQuad));
-        suckSeq.Join(Player.transform.DOScale(Vector3.zero, 1.5f).SetEase(Ease.InQuad));
+        suckSeq.Append(Player.transform.DOMove(myMoonbase.position, 1.5f).SetEase(Ease.InQuad)).SetUpdate(true);
+        suckSeq.Join(Player.transform.DOScale(Vector3.zero, 1.5f).SetEase(Ease.InQuad)).SetUpdate(true);
         suckSeq.OnComplete(() => {
             SceneManager.LoadScene("Ending");
         });
