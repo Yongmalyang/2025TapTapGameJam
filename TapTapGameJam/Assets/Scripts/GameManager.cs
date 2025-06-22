@@ -100,6 +100,9 @@ public class GameManager : MonoBehaviour
 
     public void StageClear()
     {
+        audioManager.Clear();
+        ClearStage();
+
         DOTween.To(() => Time.timeScale, x => Time.timeScale = x, 0f, slowDuration)
             .SetEase(Ease.InQuad)
             .SetUpdate(true)
@@ -114,10 +117,8 @@ public class GameManager : MonoBehaviour
                     }).SetUpdate(true); // <- Time.timeScale = 0에서도 작동하게
                 }
             });
-
-        audioManager.Clear();
-        ClearStage();
     }
+
 
     // 지금까지 했던거 다 지우기
     public void ClearStage()
