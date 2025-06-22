@@ -39,6 +39,8 @@ public class GameManager : MonoBehaviour
     private float playerAndCameraInitPos = 7f;
     private float camInitZoom = 7f;
 
+    [SerializeField] private Transform myMoonbase;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -106,6 +108,9 @@ public class GameManager : MonoBehaviour
             });
         audioManager.Clear();
         ClearStage();
+
+        // 마지막 씬이라면...
+        if (curStageNum == 3) EndingSequence();
     }
 
     // 지금까지 했던거 다 지우기
@@ -180,4 +185,19 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("Start");
     }
+
+    private void EndingSequence()
+    {
+        Player.GetComponent<Player>().DestroyAllArmWeight();
+        stageClear.gameObject.SetActive(false);
+
+        Sequence suckSeq = DOTween.Sequence();
+
+        suckSeq.Append(Player.transform.DOMove(myMoonbase.position, 1.5f).SetEase(Ease.InQuad));
+        suckSeq.Join(Player.transform.DOScale(Vector3.zero, 1.5f).SetEase(Ease.InQuad));
+        suckSeq.OnComplete(() => {
+            SceneManager.LoadScene("Ending");
+        });
+    }
+
 }
