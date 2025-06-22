@@ -20,8 +20,6 @@ public class Player : MonoBehaviour
     private GameObject LeftLeg;
     [SerializeField]
     private GameObject RightLeg;
-    [SerializeField]
-    private GameObject Legacy;
 
     void Start()
     {
@@ -124,22 +122,6 @@ public class Player : MonoBehaviour
             foreach (Transform child in limb.transform)
             {
                 Destroy(child.gameObject);
-            }
-        }
-    }
-
-    public void SaveToLegacy()
-    {
-        GameObject[] limbs = { LeftArm, RightArm, LeftLeg, RightLeg };
-
-        foreach (GameObject limb in limbs)
-        {
-            // 자식 복사 → Legacy로 옮기기
-            for (int i = limb.transform.childCount - 1; i >= 0; i--)
-            {
-                Transform child = limb.transform.GetChild(i);
-                child.SetParent(Legacy.transform);            // 이동
-                Destroy(child.gameObject);          // 즉시 파괴 (또는 DestroyImmediate if Editor)
             }
         }
     }
