@@ -113,6 +113,8 @@ public class GameManager : MonoBehaviour
     {
         spawner.DestroyAllInScene();
         resetter.ClearStageMonsters(curStageNum);
+        curPlayerWeight = 0;
+
     }
 
     public void ResetStage()
