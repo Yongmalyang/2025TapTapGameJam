@@ -30,6 +30,8 @@ public class Fish : BaseMonster
     {
         if (canDealDamage && collision.gameObject.CompareTag("Player"))
         {
+            if (!GameManager.Instance.tutorialManager.isTutoImageShown[3]) GameManager.Instance.tutorialManager.ShowTutorialImage(3);
+
             AttackPlayer(fishDamage);
             canDealDamage = false;
             lastAttackTime = Time.time;

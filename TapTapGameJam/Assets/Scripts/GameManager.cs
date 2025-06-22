@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public MainUI mainUI;
     public StageResetter resetter;
     public AudioManager audioManager;
+    public TutorialManager tutorialManager;
 
     public float oxygenAmount;
     public float maxOxygen;
@@ -56,6 +57,14 @@ public class GameManager : MonoBehaviour
     {
         oxygenAmount = maxOxygen;
         curStageNum = 0;
+        /*
+        tutorialManager.ShowTutorialImage(1, () => {
+            tutorialManager.ShowTutorialImage(2, () => {
+                tutorialManager.ShowTutorialImage(3);
+            });
+        });
+        */
+        tutorialManager.ShowTutorialImage(0);
     }
 
     public void SpawnObjectInBounds(GameObject prefabToSpawn, Transform parent)
@@ -183,6 +192,10 @@ public class GameManager : MonoBehaviour
             mainCamera.GetComponent<MainCamera>().isFollowingPlayer = true;
             mainUI.gameObject.SetActive(true);
             ResetStage();
+            if (curStageNum==1) GameManager.Instance.tutorialManager.ShowTutorialImage(4);
+            else if (curStageNum==2) GameManager.Instance.tutorialManager.ShowTutorialImage(5);
+            else if (curStageNum==3) GameManager.Instance.tutorialManager.ShowTutorialImage(6);
+
         });
         if(curStageNum>=2)audioManager.DiveIntoDeepWaters();
     }
@@ -201,9 +214,10 @@ public class GameManager : MonoBehaviour
 
         Sequence suckSeq = DOTween.Sequence();
 
+        /*
         mainCamera.DOOrthoSize(2, 1f)
             .SetEase(Ease.InOutSine);
-
+        */
         suckSeq.Append(Player.transform.DOMove(myMoonbase.position, 2f).SetEase(Ease.InQuad)).SetUpdate(true);
         suckSeq.Join(Player.transform.DOScale(Vector3.zero, 2f).SetEase(Ease.InQuad)).SetUpdate(true);
         suckSeq.OnComplete(() => {

@@ -24,6 +24,9 @@ public class Player : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        
+
     }
 
     void FixedUpdate()
@@ -46,6 +49,8 @@ public class Player : MonoBehaviour
     public void AttachArmWeight(int index, int armWeightType)
     {
         Debug.Log(index);
+
+        if (!GameManager.Instance.tutorialManager.isTutoImageShown[1]) GameManager.Instance.tutorialManager.ShowTutorialImage(1);
 
         GameObject mainArm;
         string armTag;
