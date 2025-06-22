@@ -28,7 +28,9 @@ public class StageResetter : MonoBehaviour
 
     public void CheckForMiddleWallBreak()
     {
-        if(cur >= max * 0.6)
+        cur = (float)GameManager.Instance.curPlayerWeight;
+
+        if (cur >= max * 0.6)
         {
             middleWalls[1].GetComponent<WallLine>().DestroyWall();
             //middleWalls[1].SetActive(false);
@@ -42,8 +44,8 @@ public class StageResetter : MonoBehaviour
 
     public void ResetWalls()
     {
-        float cur = (float)GameManager.Instance.curPlayerWeight;
-        float max = (float)GameManager.Instance.goalWeight[curStage];
+        cur = (float)GameManager.Instance.curPlayerWeight;
+        max = (float)GameManager.Instance.goalWeight[curStage];
 
         for (int i=0; i<2; i++)
         {
