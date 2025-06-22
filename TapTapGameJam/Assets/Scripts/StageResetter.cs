@@ -10,9 +10,12 @@ public class StageResetter : MonoBehaviour
 
     private int curStage;
 
+    private float cur, max;
+
     private void Start()
     {
         curStage = GameManager.Instance.curStageNum;
+        ResetWalls();
         ResetStageMonsters(GameManager.Instance.curStageNum);
 
     }
@@ -25,9 +28,6 @@ public class StageResetter : MonoBehaviour
 
     public void CheckForMiddleWallBreak()
     {
-        float cur = (float) GameManager.Instance.curPlayerWeight;
-        float max = (float) GameManager.Instance.goalWeight[curStage];
-
         if(cur >= max * 0.6)
         {
             middleWalls[1].GetComponent<WallLine>().DestroyWall();
@@ -42,7 +42,10 @@ public class StageResetter : MonoBehaviour
 
     public void ResetWalls()
     {
-        for(int i=0; i<2; i++)
+        float cur = (float)GameManager.Instance.curPlayerWeight;
+        float max = (float)GameManager.Instance.goalWeight[curStage];
+
+        for (int i=0; i<2; i++)
         {
             middleWalls[i].SetActive(true);
         }
