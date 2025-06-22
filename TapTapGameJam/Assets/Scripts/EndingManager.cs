@@ -39,7 +39,7 @@ public class EndingManager : MonoBehaviour
                 .SetEase(Ease.InOutSine)
         );
         fullSequence.Join(
-            player.transform.DOScale(Vector3.one, duration)
+            player.transform.DOScale(new Vector3(0.8f, 0.8f, 0.8f), duration)
                 .SetEase(Ease.InExpo)
         );
 
@@ -57,7 +57,7 @@ public class EndingManager : MonoBehaviour
         fullSequence.Append(
             player.transform.DOLocalMoveY(target.position.y + floatRange, moveDuration)
                 .SetEase(Ease.InOutSine)
-                .SetLoops(6, LoopType.Yoyo) // 무한 반복 대신 2회 반복 후 끝남
+                .SetLoops(4, LoopType.Yoyo) // 무한 반복 대신 2회 반복 후 끝남
         );
 
         // 3. 일정 시간 후 씬 전환
