@@ -28,6 +28,7 @@ public class AudioManager : MonoBehaviour
     public void DiveIntoDeepWaters()
     {
         BGM.clip = horrorBGM;
+        BGM.Play();
     }
 
     public void PressButton()

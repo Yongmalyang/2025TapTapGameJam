@@ -171,7 +171,7 @@ public class GameManager : MonoBehaviour
             mainUI.gameObject.SetActive(true);
             ResetStage();
         });
-        audioManager.DiveIntoDeepWaters();
+        if(curStageNum>=2)audioManager.DiveIntoDeepWaters();
     }
 
     public void BackToMain()
