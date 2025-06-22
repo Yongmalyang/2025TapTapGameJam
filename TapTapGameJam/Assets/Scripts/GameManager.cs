@@ -200,11 +200,11 @@ public class GameManager : MonoBehaviour
 
         Sequence suckSeq = DOTween.Sequence();
 
-        mainCamera.DOOrthoSize(2, 0.3f)
+        mainCamera.DOOrthoSize(2, 1f)
             .SetEase(Ease.InOutSine);
 
-        suckSeq.Append(Player.transform.DOMove(myMoonbase.position, 1.5f).SetEase(Ease.InQuad)).SetUpdate(true);
-        suckSeq.Join(Player.transform.DOScale(Vector3.zero, 1.5f).SetEase(Ease.InQuad)).SetUpdate(true);
+        suckSeq.Append(Player.transform.DOMove(myMoonbase.position, 2f).SetEase(Ease.InQuad)).SetUpdate(true);
+        suckSeq.Join(Player.transform.DOScale(Vector3.zero, 2f).SetEase(Ease.InQuad)).SetUpdate(true);
         suckSeq.OnComplete(() => {
             SceneManager.LoadScene("Ending");
         });
