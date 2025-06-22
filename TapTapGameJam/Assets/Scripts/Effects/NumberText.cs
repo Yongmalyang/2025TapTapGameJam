@@ -10,11 +10,14 @@ public class NumberText : MonoBehaviour
     private TextMeshProUGUI textMesh; 
     private Vector3 originalScale;
 
+    public bool isDamage;
 
     void Start()
     {
         textMesh = GetComponent<TextMeshProUGUI>();
         originalScale = transform.localScale;
+
+        if (isDamage) GameManager.Instance.audioManager.HitByFish();
 
         Color startColor = textMesh.color;
         textMesh.color = new Color(startColor.r, startColor.g, startColor.b, 1f);
