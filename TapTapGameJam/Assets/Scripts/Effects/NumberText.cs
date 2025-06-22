@@ -14,7 +14,7 @@ public class NumberText : MonoBehaviour
 
     void Start()
     {
-        if (!GameManager.Instance.tutorialManager.isTutoImageShown[2]) GameManager.Instance.tutorialManager.ShowTutorialImage(2);
+        if (!isDamage && !GameManager.Instance.tutorialManager.isTutoImageShown[2]) GameManager.Instance.tutorialManager.ShowTutorialImage(2);
 
         textMesh = GetComponent<TextMeshProUGUI>();
         originalScale = transform.localScale;
