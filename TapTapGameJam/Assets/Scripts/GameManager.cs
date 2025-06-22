@@ -193,6 +193,8 @@ public class GameManager : MonoBehaviour
 
     private void EndingSequence()
     {
+        Time.timeScale = 1f;
+
         Player.GetComponent<Player>().DestroyAllArmWeight();
         stageClear.gameObject.SetActive(false);
 
